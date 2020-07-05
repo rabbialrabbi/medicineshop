@@ -1,0 +1,102 @@
+.ht-link{
+    background-color: lightgray ;
+
+    &_button {
+        & a{
+            text-decoration: none;
+            color: gray;
+            padding: 0 .8rem;
+            font-size: 12px;
+
+        }
+
+        & a:hover{
+            color: #8FCD3A;
+        }
+
+        & span{
+            color: gray;
+        }
+
+        & li{
+            margin-top: .5rem;
+            padding: 0;
+        }
+        & button{
+            border: 0;
+            border-radius: 0 4px 4px 0;
+            background-color: white;
+        }
+
+
+        //& ul, li, form {
+        //    display: inline-block;
+        //}
+    }
+}
+
+.ht-nav{
+    position: relative;
+    background-color: #75B239;
+    text-align: center;
+
+
+    & ul li{
+        width: 150px;
+        height: 80px;
+        padding-top: 30px ;
+        list-style: none;
+
+    }
+
+    &_navbar{
+        display: inline-block;
+    }
+
+    & ul li:hover{
+        background-color: #336504;
+    }
+
+    & ul li a{
+        text-decoration: none;
+        color: white;
+    }
+
+    & ul li ul{
+        display: none;
+        position: absolute;
+        background-color: lightgray;
+        top: 80px;
+        padding-left: 0;
+        z-index: 1;
+        color: black;
+    }
+    & ul li ul a{
+        color: black;
+    }
+
+    & ul li:hover ul{
+        display: block;
+        z-index: 1;
+    }
+
+    & ul li ul li:hover {
+        background-color: transparent;
+        border-left: 2px solid #336504;
+    }
+
+    & ul li ul li:hover a {
+        color: #336504;
+    }
+}
+
+.ht-title{
+    margin-top: 30px;
+
+    & img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+}
