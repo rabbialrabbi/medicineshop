@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'MedicineShop',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>MedicineShop</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'MedicineShop',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +166,7 @@ return [
     |
     */
 
-    'right_sidebar' => false,
+    'right_sidebar' => true,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
@@ -188,7 +188,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
 
     'logout_url' => 'logout',
 
@@ -233,7 +233,7 @@ return [
     'menu' => [
         [
             'text' => 'search',
-            'search' => true,
+            'search' => false,
             'topnav' => true,
         ],
         [
@@ -241,13 +241,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+//        [
+//            'text'        => 'pages',
+//            'url'         => 'admin/pages',
+//            'icon'        => 'far fa-fw fa-file',
+//            'label'       => 4,
+//            'label_color' => 'success',
+//        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -260,15 +260,39 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Add List',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Add Generic',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text' => 'Add Brand',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Add Item Type',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Add Item',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Add MR',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Add Notice',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Reports',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Extra',
                     'url'     => '#',
                     'submenu' => [
                         [
@@ -291,28 +315,24 @@ return [
                         ],
                     ],
                 ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+//        ['header' => 'labels'],
+//        [
+//            'text'       => 'important',
+//            'icon_color' => 'red',
+//            'url'        => '#',
+//        ],
+//        [
+//            'text'       => 'warning',
+//            'icon_color' => 'yellow',
+//            'url'        => '#',
+//        ],
+//        [
+//            'text'       => 'information',
+//            'icon_color' => 'cyan',
+//            'url'        => '#',
+//        ],
     ],
 
     /*

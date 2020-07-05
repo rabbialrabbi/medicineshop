@@ -1,0 +1,29 @@
+.service {
+    padding-bottom: 120px;
+}
+
+.vision{
+
+    &_parent{
+        //outline: 2px solid lightgray;
+
+    }
+
+    &_child{
+        outline: 1px solid lightgray;
+        padding: 7px;
+        margin-top: 15px;
+
+        & h6{
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        & p{
+            font-size: 14px;
+            color: #666666;
+            margin: 0;
+
+        }
+    }
+}

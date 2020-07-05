@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+//font-family: 'Bree Serif', serif;
 
 // Variables
 @import 'variables';
@@ -8,3 +10,8 @@
 @import "global";
 @import 'frontLayout/header';
 @import "frontLayout/switch";
+@import "nav/nav";
+@import "carousel/carousel";
+@import "services/services";
+@import "productList/productList";
+@import "footer/footer";

@@ -1,6 +1,68 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);* {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap);* {
   padding: 0;
   margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.header,
+.header_white {
+  padding-top: 80px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.header p,
+.header_white p {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.header .u-line,
+.header_white .u-line {
+  background-color: white;
+  width: 160px;
+  height: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 80%;
+}
+
+.header_white p {
+  color: black;
+}
+
+.header .u-line {
+  background-color: black;
+}
+
+.bg-theme_orange {
+  background-color: #ff7700 !important;
+}
+
+.card-theme-orange {
+  border-top: 3px solid #ff7700;
+}
+
+.btn-theme_orange {
+  color: #fff;
+  background-color: #ff7700;
+  border-color: #ff7700;
+}
+
+.btn-theme_orange:hover {
+  color: #fff;
+  background-color: #f2f2f2;
+  border-color: #f2f2f2;
 }
 
 .ht-link {
@@ -15,7 +77,7 @@
 }
 
 .ht-link_button a:hover {
-  color: #8FCD3A;
+  color: #ff7700;
 }
 
 .ht-link_button span {
@@ -190,5 +252,165 @@
   --x: 28px;
   --s: 12px;
   --b: var(--dot);
+}
+
+.navbar {
+  padding: 0;
+  border-bottom: 5px solid #ff7700;
+}
+
+.header-nav {
+  background-color: #343a40;
+  padding-top: 15px;
+}
+
+.nav-logo {
+  color: #ff7700;
+  padding: 10px 10px 20px 30px;
+}
+
+.nav-link {
+  color: #ff7700;
+  padding: 15px 30px 15px 30px;
+}
+
+.nav-link:hover {
+  color: #ff7700;
+  border-color: #40464C;
+}
+
+.nav-item:hover {
+  background-color: #40464C;
+  border-radius: 5px 5px 0 0;
+}
+
+.nav-item {
+  margin-left: 4px;
+}
+
+/*Navigation Out line*/
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link.active {
+  color: white;
+  background-color: #ff7700;
+  border-color: #ff7700;
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: #40464C #40464C #ff7700;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.carousel {
+  height: 400px;
+  background-color: #ff7700;
+  font-size: 3rem;
+  text-align: center;
+  padding-top: 120px;
+}
+
+.service {
+  padding-bottom: 120px;
+}
+
+.vision_child {
+  outline: 1px solid lightgray;
+  padding: 7px;
+  margin-top: 15px;
+}
+
+.vision_child h6 {
+  font-weight: 900;
+  font-style: normal;
+}
+
+.vision_child p {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.prod {
+  background-color: #f2f2f2;
+  padding-bottom: 60px;
+}
+
+.prod-item {
+  background-color: white;
+  padding: 20px 0 0 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.07), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.prod-item h5,
+.prod-item p {
+  margin: 0;
+}
+
+.prod-item img {
+  width: 100%;
+  height: 100%;
+}
+
+.prod-item_info-header {
+  padding: 0 0 8px 20px;
+  color: #343a40;
+  font-family: "Bree Serif", serif;
+}
+
+.prod-item_info-body {
+  color: gray;
+  font-weight: lighter;
+  font-size: 14px;
+  padding: 0 0 0 20px;
+}
+
+.prod-item_info-price {
+  text-align: center;
+  padding: 5px;
+}
+
+.prod-item_info-price div {
+  padding: 5px;
+  color: #ff7700;
+}
+
+.prod-item_info-price button {
+  color: #ff7700;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.prod-item_info-price button:hover {
+  transform: scale(1.3);
+  border: none;
+  outline: none;
+}
+
+.prod-item_info hr {
+  margin-bottom: 0;
+}
+
+.prod-item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.copyright {
+  height: 80px;
+  background-color: #343a40;
+  color: #ff7700;
+  text-align: center;
+  padding-top: 20px;
 }
 

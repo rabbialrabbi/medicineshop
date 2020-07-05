@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.front');
 });
+Route::get('/test', function () {
+    return view('test');
+})->middleware('auth');
 
 Auth::routes();
 
