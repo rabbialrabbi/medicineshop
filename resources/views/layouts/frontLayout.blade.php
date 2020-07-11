@@ -84,9 +84,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                    @if(Auth()->check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('login')}}">LogIn</a>
+                        <a class="nav-link" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
+                        @else()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('login')}}">LogIn</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

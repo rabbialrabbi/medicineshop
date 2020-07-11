@@ -8,9 +8,11 @@
 
 // Bootstrap
 @import "global";
+@import "bootstrap/custom";
 @import 'frontLayout/header';
 @import "frontLayout/switch";
 @import "nav/nav";
+@import "adminlte/custom";
 @import "carousel/carousel";
 @import "services/services";
 @import "productList/productList";
