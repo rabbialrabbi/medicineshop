@@ -273,15 +273,15 @@ return [
                 ],
                 [
                     'text' => 'Add Item Type',
-                    'url'  => '#',
+                    'url'  => '/item-type',
                 ],
                 [
                     'text' => 'Add Item',
-                    'url'  => '#',
+                    'url'  => '/item',
                 ],
                 [
                     'text' => 'Add MR',
-                    'url'  => '#',
+                    'url'  => '/mr',
                 ],
                 [
                     'text' => 'Add Notice',

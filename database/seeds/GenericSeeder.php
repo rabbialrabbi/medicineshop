@@ -1,5 +1,6 @@
 <?php
 
+use App\Generic;
 use Illuminate\Database\Seeder;
 
 class GenericSeeder extends Seeder
@@ -11,6 +12,12 @@ class GenericSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Generic::insert([
+            ['name'=>'saffro'],
+            ['name'=>'cardamom'],
+            ['name'=>'citron'],
+            ['name'=>'Khamira'],
+            ['name'=>'bilious']
+        ]);
     }
 }

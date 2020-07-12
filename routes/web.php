@@ -28,29 +28,25 @@ Route::group(['middleware'=>'admin'], function(){
         Route::delete('/{generic}', 'GenericController@destroy')->name('destroy.generic');
     });
     Route::group(['prefix'=>'/brand'],function (){
-        Route::get('/', 'AdminController@brand');
-        Route::post('/', 'AdminController@storeBrand');
-        Route::delete('/{Brand}', 'AdminController@destroyBrand');
+        Route::get('/', 'BrandController@index')->name('show.brand');
+        Route::post('/', 'BrandController@store')->name('add.brand');
+        Route::delete('/{brand}', 'BrandController@destroy')->name('destroy.brand');
     });
     Route::group(['prefix'=>'/item-type'],function (){
-        Route::get('/', 'AdminController@itemType');
-        Route::post('/', 'AdminController@storeItemType');
-        Route::delete('/{ItemType}', 'AdminController@destroyItemType');
+        Route::get('/', 'ItemTypeController@index')->name('show.itemType');
+        Route::post('/', 'ItemTypeController@store')->name('add.itemType');
+        Route::delete('/{itemType}', 'ItemTypeController@destroy')->name('destroy.itemType');
     });
     Route::group(['prefix'=>'/item'],function (){
-        Route::get('/', 'AdminController@item');
-        Route::post('/', 'AdminController@storeItem');
-        Route::delete('/{Item}', 'AdminController@destroyItem');
+        Route::get('/', 'ItemController@index')->name('show.item');
+        Route::post('/', 'ItemController@store')->name('add.item');
+        Route::delete('/{item}', 'ItemController@destroy')->name('destroy.item');
     });
     Route::group(['prefix'=>'/mr'],function (){
-        Route::get('/', 'AdminController@mr');
-        Route::post('/', 'AdminController@storeMr');
-        Route::delete('/{Mr}', 'AdminController@destroyMr');
+        Route::get('/', 'MRController@index')->name('show.mr');
+        Route::post('/', 'MRController@store')->name('add.mr');
+        Route::delete('/{mr}', 'MRController@destroy')->name('destroy.mr');
     });
-
-//    Route::get('/admin', 'AdminController@index');
-//    Route::get('/admin', 'AdminController@index');
-//    Route::get('/admin', 'AdminController@index');
 
 });
 

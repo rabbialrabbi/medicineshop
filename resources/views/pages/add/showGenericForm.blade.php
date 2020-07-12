@@ -12,7 +12,6 @@
         <div class="card card-warning">
             <div class="card-header">
             </div>
-
             <form role="form" action="{{route('add.generic')}}" method="post">
                 @csrf
                 <div class="card-body">
@@ -21,8 +20,6 @@
                         <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Generic Name">
                     </div>
                 </div>
-                <!-- /.card-body -->
-
                 <div class="card-footer">
                     <button type="submit" class="btn btn-warning">ADD</button>
                 </div>
@@ -53,7 +50,7 @@
                 <div class="table-responsive mailbox-messages">
                     <table class="table table-hover table-striped">
                         <tbody>
-                        @foreach($generics as $g)
+                        @foreach($items as $g)
                             <tr>
                                 <td>
                                 </td>
@@ -61,10 +58,10 @@
                                 <td class="mailbox-name"></td>
                                 <td class="mailbox-date">{{$g->name}}</td>
                                 <td class="mailbox-attachment">
-                                    <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic').submit();">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
+                                        <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                     </a>
-                                    <form id="delete-generic" action="{{ route('destroy.generic',['generic'=>$g->id]) }}" method="POST" style="display: none;">
+                                    <form id="delete-generic{{$g->id}}" action="{{ route('destroy.generic',['generic'=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('delete')
                                     </form></td>
@@ -141,11 +138,10 @@
                             <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
                             <td class="mailbox-date">Yesterday</td>
                         </tr>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
             </div>
-            <!-- /.card-body -->
-        <!-- /.card -->
+        </div>
     </div>
 
 @endsection

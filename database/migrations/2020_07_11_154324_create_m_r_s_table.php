@@ -15,6 +15,19 @@ class CreateMRSTable extends Migration
     {
         Schema::create('m_r_s', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
+            $table->string('name');
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('address3')->nullable();
+            $table->string('contact1')->nullable();
+            $table->string('contact2')->nullable();
+            $table->string('contact3')->nullable();
+            $table->string('email1')->nullable();
+            $table->string('email2')->nullable();
+            $table->string('email3')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('photo_url');
             $table->timestamps();
         });
     }

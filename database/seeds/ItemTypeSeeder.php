@@ -1,5 +1,6 @@
 <?php
 
+use App\ItemType;
 use Illuminate\Database\Seeder;
 
 class ItemTypeSeeder extends Seeder
@@ -11,6 +12,10 @@ class ItemTypeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ItemType::insert([
+            ['name'=>'Food'],
+            ['name'=>'Unani'],
+            ['name'=>'Ayurvedic'],
+        ]);
     }
 }

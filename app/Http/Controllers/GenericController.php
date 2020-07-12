@@ -13,7 +13,7 @@ class GenericController extends Controller
 
        $data =  Generic::orderBy('created_at', 'desc')->get();
         return view('pages.add.showGenericForm',[
-            'generics'=>$data
+            'items'=>$data
         ]);
     }
 
