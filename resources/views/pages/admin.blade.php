@@ -13,7 +13,7 @@
             <div class="card-header">
             </div>
 
-            <form role="form" action="{{route('add.generic')}}" method="post">
+            <form role="form" action="{{route('generic.store')}}" method="post">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Generic Name</label>

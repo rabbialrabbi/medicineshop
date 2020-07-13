@@ -11,7 +11,11 @@ class GenericController extends Controller
     public function index()
     {
 
-       $data =  Generic::orderBy('created_at', 'desc')->get();
+    }
+
+    public function create()
+    {
+        $data =  Generic::orderBy('created_at', 'desc')->get();
         return view('pages.add.showGenericForm',[
             'items'=>$data
         ]);

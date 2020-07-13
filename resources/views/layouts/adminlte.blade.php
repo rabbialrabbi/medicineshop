@@ -1,19 +1,6 @@
 @extends('adminlte::page')
 @section('adminlte_css')
-    <style>
-        [class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus{
-            color: #ff7700;
-        }
-        [class*=sidebar-dark-] .nav-treeview>.nav-item:hover>.nav-link {
-            color: #ff7700;
-        }
-        [class*=sidebar-dark] .brand-link:hover {
-            color: #ff7700;
-        }
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: #ff7700;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/adminlte/custom.css">
 @endsection
 @section('content_top_nav_left')
     <li class="nav-item d-none d-sm-inline-block">

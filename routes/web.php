@@ -23,29 +23,37 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin', 'AdminController@index');
 
     Route::group(['prefix'=>'/generic'],function (){
-        Route::get('/', 'GenericController@index')->name('show.generic');
-        Route::post('/', 'GenericController@store')->name('add.generic');
-        Route::delete('/{generic}', 'GenericController@destroy')->name('destroy.generic');
+        Route::get('/create', 'GenericController@create')->name('generic.create');
+        Route::post('/', 'GenericController@store')->name('generic.store');
+        Route::delete('/{generic}', 'GenericController@destroy')->name('generic.destroy');
     });
     Route::group(['prefix'=>'/brand'],function (){
-        Route::get('/', 'BrandController@index')->name('show.brand');
-        Route::post('/', 'BrandController@store')->name('add.brand');
-        Route::delete('/{brand}', 'BrandController@destroy')->name('destroy.brand');
+        Route::get('/create', 'BrandController@create')->name('brand.create');
+        Route::post('/', 'BrandController@store')->name('brand.store');
+        Route::delete('/{brand}', 'BrandController@destroy')->name('brand.destroy');
     });
     Route::group(['prefix'=>'/item-type'],function (){
-        Route::get('/', 'ItemTypeController@index')->name('show.itemType');
-        Route::post('/', 'ItemTypeController@store')->name('add.itemType');
-        Route::delete('/{itemType}', 'ItemTypeController@destroy')->name('destroy.itemType');
+        Route::get('/create', 'ItemTypeController@create')->name('itemType.create');
+        Route::post('/', 'ItemTypeController@store')->name('itemType.store');
+        Route::delete('/{itemType}', 'ItemTypeController@destroy')->name('itemType.destroy');
     });
     Route::group(['prefix'=>'/item'],function (){
-        Route::get('/', 'ItemController@index')->name('show.item');
-        Route::post('/', 'ItemController@store')->name('add.item');
-        Route::delete('/{item}', 'ItemController@destroy')->name('destroy.item');
+        Route::get('/{key?}', 'ItemController@index')->name('item.index');
+        Route::get('/create', 'ItemController@create')->name('item.create');
+        Route::get('/{item}', 'ItemController@show')->name('item.show');
+        Route::get('/{item}/edit', 'ItemController@show')->name('item.show');
+        Route::post('/', 'ItemController@store')->name('item.store');
+        Route::patch('/', 'ItemController@update')->name('item.update');
+        Route::delete('/{item}', 'ItemController@destroy')->name('item.destroy');
     });
     Route::group(['prefix'=>'/mr'],function (){
-        Route::get('/', 'MRController@index')->name('show.mr');
-        Route::post('/', 'MRController@store')->name('add.mr');
-        Route::delete('/{mr}', 'MRController@destroy')->name('destroy.mr');
+        Route::get('/', 'MRController@index')->name('mr.index');
+        Route::get('/create', 'MRController@create')->name('mr.create');
+        Route::get('/{mr}', 'MRController@show')->name('mr.show');
+        Route::get('/{mr}/edit', 'MRController@show')->name('mr.show');
+        Route::post('/', 'MRController@store')->name('mr.store');
+        Route::patch('/', 'MRController@update')->name('mr.update');
+        Route::delete('/{mr}', 'MRController@destroy')->name('mr.destroy');
     });
 
 });

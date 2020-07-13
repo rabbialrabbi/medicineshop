@@ -10,16 +10,16 @@ class ItemTypeController extends Controller
 
     public function index()
     {
-        $data =  ItemType::orderBy('created_at', 'desc')->get();
-        return view('pages.add.showItemTypeForm',[
-            'items'=>$data
-        ]);
+
     }
 
 
     public function create()
     {
-        //
+        $data =  ItemType::orderBy('created_at', 'desc')->get();
+        return view('pages.add.showItemTypeForm',[
+            'items'=>$data
+        ]);
     }
 
 

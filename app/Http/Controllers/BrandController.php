@@ -10,16 +10,16 @@ class BrandController extends Controller
 
     public function index()
     {
-        $data =  Brand::orderBy('created_at', 'desc')->get();
-        return view('pages.add.showBrandForm',[
-            'items'=>$data
-        ]);
+
     }
 
 
     public function create()
     {
-
+        $data =  Brand::orderBy('created_at', 'desc')->get();
+        return view('pages.add.showBrandForm',[
+            'items'=>$data
+        ]);
     }
 
 

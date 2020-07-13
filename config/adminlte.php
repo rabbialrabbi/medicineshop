@@ -265,55 +265,45 @@ return [
             'submenu' => [
                 [
                     'text' => 'Add Generic',
-                    'url'  => '/generic',
+                    'url'  => '/generic/create',
                 ],
                 [
                     'text' => 'Add Brand',
-                    'url'  => '/brand',
+                    'url'  => '/brand/create',
                 ],
                 [
                     'text' => 'Add Item Type',
-                    'url'  => '/item-type',
+                    'url'  => '/item-type/create',
                 ],
                 [
                     'text' => 'Add Item',
-                    'url'  => '/item',
+                    'url'  => '/item/create',
                 ],
                 [
                     'text' => 'Add MR',
-                    'url'  => '/mr',
+                    'url'  => '/mr/create',
                 ],
                 [
                     'text' => 'Add Notice',
                     'url'  => '#',
                 ],
+            ],
+        ],
+        [
+            'text'    => 'Report',
+            'icon'    => 'fas fa-chart-line',
+            'submenu' => [
                 [
-                    'text' => 'Reports',
-                    'url'  => '#',
+                    'text' => 'Item List',
+                    'url'  => '/item',
                 ],
                 [
-                    'text'    => 'Extra',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'MR List',
+                    'url'  => '/mr',
+                ],
+                [
+                    'text' => 'Notice',
+                    'url'  => '#',
                 ],
             ],
         ],

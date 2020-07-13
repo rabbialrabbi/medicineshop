@@ -12,7 +12,7 @@
         <div class="card card-warning">
             <div class="card-header">
             </div>
-            <form role="form" action="{{route('add.generic')}}" method="post">
+            <form role="form" action="{{route('generic.store')}}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -61,7 +61,7 @@
                                     <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
                                         <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                     </a>
-                                    <form id="delete-generic{{$g->id}}" action="{{ route('destroy.generic',['generic'=>$g->id]) }}" method="POST" style="display: none;">
+                                    <form id="delete-generic{{$g->id}}" action="{{ route('generic.destroy',['generic'=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('delete')
                                     </form></td>

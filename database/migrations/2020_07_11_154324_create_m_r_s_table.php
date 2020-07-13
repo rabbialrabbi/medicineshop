@@ -27,7 +27,7 @@ class CreateMRSTable extends Migration
             $table->string('email2')->nullable();
             $table->string('email3')->nullable();
             $table->string('fax')->nullable();
-            $table->string('photo_url');
+            $table->string('image');
             $table->timestamps();
         });
     }

@@ -1,0 +1,17 @@
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item:hover>.nav-link, [class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus{
+    color: #ff7700;
+}
+[class*=sidebar-dark-] .nav-treeview>.nav-item:hover>.nav-link {
+    color: #ff7700;
+}
+[class*=sidebar-dark] .brand-link:hover {
+    color: #ff7700;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #ff7700;
+}
+
+.mr-element_img {
+    border: 3px solid grey;
+}
+

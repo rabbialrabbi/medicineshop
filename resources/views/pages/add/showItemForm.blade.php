@@ -12,7 +12,7 @@
         <div class="card card-warning">
             <div class="card-header">
             </div>
-            <form role="form" action="{{route('add.item')}}" method="post">
+            <form role="form" action="{{route('item.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row">
@@ -25,7 +25,7 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Item Code</label>
-                                <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Item Name">
+                                <input type="text" name="code" class="form-control" id="exampleInputEmail1" placeholder="Enter Item Code">
                             </div>
                         </div>
                     </div>
@@ -34,19 +34,19 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Dosage</label>
-                                <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Item Name">
+                                <input type="text" name="dosage" class="form-control" id="exampleInputEmail1" placeholder="Enter Dosage">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Size</label>
-                                <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Item Name">
+                                <input type="text" name="size" class="form-control" id="exampleInputEmail1" placeholder="Enter Size">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>
-                                <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Item Name">
+                                <input type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="Enter Price">
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Item Type</label>
-                                <select class="form-control">
+                                <select class="form-control" name="item_type_id">
                                     @foreach($itemType as $i)
                                         <option value="{{$i->id}}">{{$i->name}}</option>
                                     @endforeach
@@ -65,7 +65,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>Generic Name</label>
-                                <select class="form-control">
+                                <select class="form-control" name="generic_id">
                                     @foreach($generic as $i)
                                         <option value="{{$i->id}}">{{$i->name}}</option>
                                     @endforeach
@@ -75,7 +75,7 @@
                         <div class="col-sm-4">
                             <div class="form-group ">
                                 <label>Brand Name</label>
-                                <select class="form-control">
+                                <select class="form-control" name="brand_id">
                                     @foreach($brand as $i)
                                         <option value="{{$i->id}}">{{$i->name}}</option>
                                     @endforeach
@@ -88,7 +88,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                <textarea class="form-control" rows="3" placeholder="Enter ..." name="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                 <label for="exampleInputFile">Choose Photo</label>
                                 <div class="input-group">
                                     <div class="input-group-append">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                 <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
                                     <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                 </a>
-                                <form id="delete-generic{{$g->id}}" action="{{ route('destroy.item',['item'=>$g->id]) }}" method="POST" style="display: none;">
+                                <form id="delete-generic{{$g->id}}" action="{{ route('item.destroy',['item'=>$g->id]) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('delete')
                                 </form></td>

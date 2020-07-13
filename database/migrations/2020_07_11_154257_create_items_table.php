@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
             $table->string('dosage')->nullable();
             $table->string('price');
             $table->string('description');
-            $table->string('photo_url');
+            $table->string('image');
             $table->timestamps();
         });
     }
