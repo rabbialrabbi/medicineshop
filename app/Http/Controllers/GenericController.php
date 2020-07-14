@@ -48,7 +48,15 @@ class GenericController extends Controller
 
     public function update(Request $request, Generic $generic)
     {
-        //
+        if($generic->status == 'Active'){
+            $generic->status = "Inactive";
+            $generic->save();
+            return redirect()->back();
+        }
+
+        $generic->status = "Active";
+        $generic->save();
+        return redirect()->back();
     }
 
 

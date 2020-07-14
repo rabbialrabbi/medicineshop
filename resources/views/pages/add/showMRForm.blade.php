@@ -12,7 +12,7 @@
         <div class="card card-warning">
             <div class="card-header">
             </div>
-            <form role="form" action="{{route('mr.create')}}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{route('mr.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="row">

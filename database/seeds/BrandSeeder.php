@@ -13,12 +13,12 @@ class BrandSeeder extends Seeder
     public function run()
     {
         Brand::insert([
-            ['name'=>'Sambhalo'],
-            ['name'=>'Malkangani'],
-            ['name'=>'Khatmi'],
-            ['name'=>'Asl-us-Soos'],
-            ['name'=>'Zanjabeel'],
-            ['name'=>'Adrak'],
+            ['name'=>'Sambhalo', 'status'=>'Active'],
+            ['name'=>'Malkangani', 'status'=>'Active'],
+            ['name'=>'Khatmi', 'status'=>'Active'],
+            ['name'=>'Asl-us-Soos', 'status'=>'Active'],
+            ['name'=>'Zanjabeel', 'status'=>'Active'],
+            ['name'=>'Adrak', 'status'=>'Active'],
         ]);
     }
 }

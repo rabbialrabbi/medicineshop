@@ -45,15 +45,29 @@
                             <td class="mailbox-name"></td>
                             <td class="mailbox-date">{{$g->name}}</td>
                             <td class="mailbox-attachment">
+                                <a class="" style="cursor: pointer" onclick="event.preventDefault(); document.getElementById('status-{{$g->id}}').submit();">
+                                    @if($g->status == 'Inactive')
+                                        <span class="badge-btn" style="background-color: lightgrey" >{{$g->status}}</span>
+                                    @else
+                                        <span class="badge-btn bg-success" >{{$g->status}}</span>
+                                    @endif
+
+                                </a>
+                                <form id="status-{{$g->id}}" action="{{ route('itemType.update',['itemType'=>$g->id]) }}" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input type="hidden" name="status" value="Inactive">
+                                </form>
+
+                            </td>
+                            <td class="mailbox-date text-center">
                                 <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
                                     <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                 </a>
                                 <form id="delete-generic{{$g->id}}" action="{{ route('itemType.destroy',['itemType'=>$g->id]) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('delete')
-                                </form></td>
-                            <td class="mailbox-date text-center">
-
+                                </form>
                             </td>
                         </tr>
                     @endforeach

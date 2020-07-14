@@ -38,9 +38,9 @@ class MRController extends Controller
     public function create()
     {
         $data =  MR::orderBy('created_at', 'desc')->get();
-        $itemType = ItemType::all();
-        $brand = Brand::all();
-        $generic = Generic::all();
+        $itemType = ItemType::where('status','Active')->get();
+        $brand = Brand::where('status','Active')->get();
+        $generic = Generic::where('status','Active')->get();
         return view('pages.add.showMRForm',[
             'items'=>$data,
             'itemType'=>$itemType,
@@ -88,18 +88,21 @@ class MRController extends Controller
 
     public function edit(MR $mr)
     {
-        //
+        return view('pages.edit.showMREditForm',[
+            'mr'=>$mr
+        ]);
     }
 
 
     public function update(Request $request, MR $mr)
     {
-        //
+        dd($request);
     }
 
 
     public function destroy(MR $mr)
     {
+        dd($mr);
         $mr->delete();
         return redirect()->back();
     }

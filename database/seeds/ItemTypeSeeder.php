@@ -13,9 +13,9 @@ class ItemTypeSeeder extends Seeder
     public function run()
     {
         ItemType::insert([
-            ['name'=>'Food'],
-            ['name'=>'Unani'],
-            ['name'=>'Ayurvedic'],
+            ['name'=>'Food', 'status'=>'Active'],
+            ['name'=>'Unani', 'status'=>'Active'],
+            ['name'=>'Ayurvedic', 'status'=>'Active'],
         ]);
     }
 }

@@ -47,7 +47,15 @@ class ItemTypeController extends Controller
 
     public function update(Request $request, ItemType $itemType)
     {
-        //
+        if($itemType->status == 'Active'){
+            $itemType->status = "Inactive";
+            $itemType->save();
+            return redirect()->back();
+        }
+
+        $itemType->status = "Active";
+        $itemType->save();
+        return redirect()->back();
     }
 
 

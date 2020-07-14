@@ -47,7 +47,17 @@ class BrandController extends Controller
 
     public function update(Request $request, Brand $brand)
     {
-        //
+
+        if($brand->status == 'Active'){
+            $brand->status = "Inactive";
+            $brand->save();
+            return redirect()->back();
+        }
+
+        $brand->status = "Active";
+        $brand->save();
+        return redirect()->back();
+
     }
 
 

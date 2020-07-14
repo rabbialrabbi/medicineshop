@@ -13,11 +13,11 @@ class GenericSeeder extends Seeder
     public function run()
     {
         Generic::insert([
-            ['name'=>'saffro'],
-            ['name'=>'cardamom'],
-            ['name'=>'citron'],
-            ['name'=>'Khamira'],
-            ['name'=>'bilious']
+            ['name'=>'saffro', 'status'=>'Active'],
+            ['name'=>'cardamom', 'status'=>'Active'],
+            ['name'=>'citron', 'status'=>'Active'],
+            ['name'=>'Khamira', 'status'=>'Active'],
+            ['name'=>'bilious', 'status'=>'Active']
         ]);
     }
 }

@@ -58,86 +58,32 @@
                                 <td class="mailbox-name"></td>
                                 <td class="mailbox-date">{{$g->name}}</td>
                                 <td class="mailbox-attachment">
+                                    <a class="" style="cursor: pointer" onclick="event.preventDefault(); document.getElementById('status-{{$g->id}}').submit();">
+                                        @if($g->status == 'Inactive')
+                                            <span class="badge-btn" style="background-color: lightgrey" >{{$g->status}}</span>
+                                        @else
+                                            <span class="badge-btn bg-success" >{{$g->status}}</span>
+                                        @endif
+
+                                    </a>
+                                    <form id="status-{{$g->id}}" action="{{ route('generic.update',['generic'=>$g->id]) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="status" value="Inactive">
+                                    </form>
+
+                                </td>
+                                <td class="mailbox-date text-center">
                                     <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
                                         <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                     </a>
                                     <form id="delete-generic{{$g->id}}" action="{{ route('generic.destroy',['generic'=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('delete')
-                                    </form></td>
-                                <td class="mailbox-date text-center">
-
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
-
-                        <tr>
-                            <td>
-                            </td>
-                            <td class="mailbox-star"></td>
-                            <td class="mailbox-name"></td>
-                            <td class="mailbox-date">Alexander Pierce</td>
-                            <td class="mailbox-attachment">5 mins ago</td>
-                            <td class="mailbox-date">
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="icheck-primary">
-                                    <input type="checkbox" value="" id="check2">
-                                    <label for="check2"></label>
-                                </div>
-                            </td>
-                            <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                            </td>
-                            <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                            <td class="mailbox-date">28 mins ago</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="icheck-primary">
-                                    <input type="checkbox" value="" id="check3">
-                                    <label for="check3"></label>
-                                </div>
-                            </td>
-                            <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                            </td>
-                            <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                            <td class="mailbox-date">11 hours ago</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="icheck-primary">
-                                    <input type="checkbox" value="" id="check4">
-                                    <label for="check4"></label>
-                                </div>
-                            </td>
-                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                            </td>
-                            <td class="mailbox-attachment"></td>
-                            <td class="mailbox-date">15 hours ago</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="icheck-primary">
-                                    <input type="checkbox" value="" id="check5">
-                                    <label for="check5"></label>
-                                </div>
-                            </td>
-                            <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                            <td class="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                            <td class="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                            </td>
-                            <td class="mailbox-attachment"><i class="fas fa-paperclip"></i></td>
-                            <td class="mailbox-date">Yesterday</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

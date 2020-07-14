@@ -95,3 +95,14 @@
     </li>
 
 @endsection
+
+@section('content')
+    <div id="app">
+        @yield('content_body')
+    </div>
+
+    @endsection
+
+@section('js')
+    <script src="/js/app.js"></script>
+    @endsection

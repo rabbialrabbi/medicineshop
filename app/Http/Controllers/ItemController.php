@@ -14,16 +14,16 @@ class ItemController extends Controller
 
     public function index()
     {
-
+        dd('working');
     }
 
 
     public function create()
     {
         $data =  Item::orderBy('created_at', 'desc')->get();
-        $itemType = ItemType::all();
-        $brand = Brand::all();
-        $generic = Generic::all();
+        $itemType = ItemType::where('status','Active')->get();
+        $brand = Brand::where('status','Active')->get();
+        $generic = Generic::where('status','Active')->get();
         return view('pages.add.showItemForm',[
             'items'=>$data,
             'itemType'=>$itemType,
