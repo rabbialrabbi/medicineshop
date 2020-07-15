@@ -46,7 +46,7 @@ Route::group(['middleware'=>'admin'], function(){
         Route::get('/{item}', 'ItemController@show')->name('item.show');
         Route::get('/{item}/edit', 'ItemController@edit')->name('item.edit');
         Route::post('/', 'ItemController@store')->name('item.store');
-        Route::patch('/', 'ItemController@update')->name('item.update');
+        Route::patch('/{item}', 'ItemController@update')->name('item.update');
         Route::delete('/{item}', 'ItemController@destroy')->name('item.destroy');
     });
     Route::group(['prefix'=>'/mr'],function (){
@@ -55,7 +55,7 @@ Route::group(['middleware'=>'admin'], function(){
         Route::get('/{mr}', 'MRController@show')->name('mr.show');
         Route::get('/{mr}/edit', 'MRController@edit')->name('mr.edit');
         Route::post('/', 'MRController@store')->name('mr.store');
-        Route::patch('/', 'MRController@update')->name('mr.update');
+        Route::patch('/{mr}', 'MRController@update')->name('mr.update');
         Route::delete('/{mr}', 'MRController@destroy')->name('mr.destroy');
     });
 

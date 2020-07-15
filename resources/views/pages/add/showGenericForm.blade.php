@@ -25,6 +25,15 @@
                 </div>
             </form>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger mt-4" role="alert">
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li>{{$error}}</li>
+                    </ul>
+                @endforeach
+            </div>
+        @endif
     </div>
 
     <div class="container">

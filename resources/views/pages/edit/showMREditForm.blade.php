@@ -14,7 +14,7 @@
                 <img class="mr-element_img" src="/storage/mrlist/{{$mr->image}}" alt="{{$mr->name}}" height="300px" width="300px">
             </div>
             <div class="col-sm-12 col-md-8 pt-5">
-                <form id="mr-update" role="form" action="/mr" method="post"enctype="multipart/form-data">
+                <form id="mr-update" role="form" action="{{route('mr.update',['mr'=>$mr->id])}}" method="post"enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="card-body">
@@ -159,7 +159,7 @@
                 <a href="/mr/{{$mr->id}}" class="btn btn-warning">View</a>
             </div>
             <div class="col card-footer">
-                <a class="btn btn-success px-4" href="{{ route('mr.update') }}"
+                <a class="btn btn-success px-4"
                    onclick="event.preventDefault();
                                                      document.getElementById('mr-update').submit();">
                     Update
@@ -177,10 +177,21 @@
                 </form>
             </div>
         </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger mt-4" role="alert">
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li>{{$error}}</li>
+                    </ul>
+                @endforeach
+            </div>
+        @endif
+
     </div>
 @endsection
 @section('js')
-    <script src="/js/app.js"></script>
+{{--    <script src="/js/app.js"></script>--}}
     <script >
         $(document).ready(function(){
 

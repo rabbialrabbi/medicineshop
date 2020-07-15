@@ -2,51 +2,75 @@
 
 @section('title','Generic')
 
-@section('content_header')
-    <h1 class="pt-5" style="text-align: center">Generic Input Form</h1>
-@endsection
-
-
 @section('content')
-    <div class="container pt-5">
-        <div class="card card-warning">
-            <div class="card-header">
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>0</h3>
+
+                    <p>New Orders</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                    More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
-
-            <form role="form" action="{{route('generic.store')}}" method="post">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Generic Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="">Upload</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-warning">Submit</button>
-                </div>
-            </form>
         </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>{{$item}}<sup style="font-size: 20px"></sup></h3>
+
+                    <p>Item</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{route('item.create')}}" class="small-box-footer">
+                    Add Item <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>{{$mr}}</h3>
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <a href="{{route('mr.create')}}" class="small-box-footer">
+                    Add MR <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small card -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>{{$brand}}</h3>
+
+                    <p>Unique Brands</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <a href="{{route('brand.create')}}" class="small-box-footer">
+                    Add Brand <i class="fas fa-arrow-circle-right" onclick="window.location.href='{{route('brand.create')}}'"></i>
+                </a>
+            </div>
+        </div>
+        <!-- ./col -->
     </div>
 
 @endsection

@@ -7,7 +7,7 @@
 @endsection
 
 
-@section('content')
+@section('content_body')
     <div class="container pt-5">
         <div class="card card-warning">
             <div class="card-header">
@@ -32,40 +32,40 @@
 
                     <div class="row">
                         <div class="col-sm-6 col-md-6">
-                            <div class="form-group">
+                            <div id="address" class="form-group">
                                 <label for="exampleInputEmail1">Address</label>
                                 <div class="row">
                                     <div class="col-sm-10">
                                         <input type="text" name="address1" class="form-control" id="exampleInputEmail1" placeholder="Enter Address1">
                                     </div>
                                     <div class="col-sm-1 align-self-center text-center">
-                                        <i class="fas fa-plus"></i>
+                                        <i id="addition_address" class="fas fa-plus text-success"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <div class="form-group">
+                            <div id="contact" class="form-group">
                                 <label for="exampleInputEmail1">Contact</label>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        <input type="text" name="contact1" class="form-control" id="exampleInputEmail1" placeholder="Enter Contact1">
+                                        <input type="text" name="contact1" class="form-control" id="exampleInputContact" placeholder="Enter Contact1">
                                     </div>
                                     <div class="col-sm-1 align-self-center text-center">
-                                        <i class="fas fa-plus"></i>
+                                        <i id="addition_contact" class="fas fa-plus text-success"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                            <div class="form-group">
+                            <div id="email" class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        <input type="text" name="email1" class="form-control" id="exampleInputEmail1" placeholder="Enter Email">
+                                        <input type="text" name="email1" class="form-control" id="exampleInputEmail" placeholder="Enter Email1">
                                     </div>
-                                    <div class="col-sm-1 align-self-center">
-                                        <i class="fas fa-plus"></i>
+                                    <div  class="col-sm-1 align-self-center">
+                                        <i class="fas fa-plus text-success" id="addition_email"></i>
                                     </div>
                                 </div>
                             </div>
@@ -77,12 +77,12 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Fax</label>
                                 <div class="row">
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-12">
                                         <input type="text" name="fax" class="form-control" id="exampleInputEmail1" placeholder="Enter Fax">
                                     </div>
-                                    <div class="col-sm-1 align-self-center text-center">
-                                        <i class="fas fa-plus"></i>
-                                    </div>
+{{--                                    <div class="col-sm-1 align-self-center text-center">--}}
+{{--                                        <i class="fas fa-plus"></i>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -104,6 +104,15 @@
                 </div>
             </form>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger mt-4" role="alert">
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li>{{$error}}</li>
+                    </ul>
+                @endforeach
+            </div>
+        @endif
     </div>
 
     <div class="container">
@@ -143,5 +152,54 @@
     </div>
 
 @endsection
+
+@section('js')
+{{--    <script src="/js/app.js"></script>--}}
+    <script >
+        $(document).ready(function(){
+
+            let address_i = 1;
+            let contact_i = 1;
+            let email_i = 1;
+            // add additional work and job field
+            $("#addition_address").click(function () {
+                address_i++
+                if(address_i <=3){
+                    $("#address").append(`<div class="row pt-3" >
+                                        <div class="col-sm-10">
+                                            <input type="text" name="address${address_i}" class="form-control" placeholder="Enter Another address">
+                                        </div>
+                                    </div>`);
+                }
+
+            });
+
+            $("#addition_email").click(function () {
+                email_i++
+                if(email_i<=3){
+                    $("#email").append(`<div class="row pt-3" >
+                                        <div class="col-sm-10">
+                                            <input type="text" name="email${email_i}" class="form-control" placeholder="Enter Another Email">
+                                        </div>
+                                    </div>`);
+                }
+
+            });
+
+            $("#addition_contact").click(function () {
+                contact_i++
+                if(contact_i<=3){
+                    $("#contact").append(`<div class="row pt-3" >
+                                        <div class="col-sm-10">
+                                            <input type="text" name="email${contact_i}" class="form-control" placeholder="Enter Another Contact">
+                                        </div>
+                                    </div>`);
+                }
+
+            });
+
+        });
+    </script>
+    @endsection
 
 

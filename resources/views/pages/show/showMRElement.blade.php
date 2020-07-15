@@ -45,7 +45,7 @@
 
                                     @if(!is_null($mr->address2))
                                         <div class="row pt-3" >
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-12">
                                                 <input type="text" name="address2" class="form-control" value="{{$mr->address2}}" placeholder="{{$mr->address2}}" disabled>
                                             </div>
                                         </div>
@@ -53,7 +53,7 @@
 
                                     @if(!is_null($mr->address3))
                                         <div class="row pt-3" >
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-12">
                                                 <input type="text" name="address3" class="form-control" value="{{$mr->address3}}" placeholder="{{$mr->address3}}" disabled>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@
 
                                     @if(!is_null($mr->email2))
                                         <div class="row pt-3">
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-12">
                                                 <input type="text" name="email2" value="{{$mr->email2}}" class="form-control" placeholder="{{$mr->email2}}" disabled>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
 
                                     @if(!is_null($mr->email3))
                                         <div class="row pt-3">
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-12">
                                                 <input type="text" name="email3" value="{{$mr->email3}}" class="form-control" placeholder="{{$mr->email3}}" disabled>
                                             </div>
                                         </div>

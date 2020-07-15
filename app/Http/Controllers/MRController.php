@@ -9,6 +9,7 @@ use App\ItemType;
 use App\MR;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MRController extends Controller
 {
@@ -53,21 +54,7 @@ class MRController extends Controller
     public function store(Request $request)
     {
 
-        $sanitized = $request->validate([
-            'code'=>'required',
-            'name'=>'required',
-            'address1'=>'required',
-            'address2'=>'sometimes',
-            'address3'=>'sometimes',
-            'contact1'=>'required',
-            'contact2'=>'sometimes',
-            'contact3'=>'sometimes',
-            'email1'=>'required',
-            'email2'=>'sometimes',
-            'email3'=>'sometimes',
-            'fax'=>'sometimes',
-            'image'=>'required|image|mimes:png,jpg,jpeg|max:2048',
-        ]);
+        $sanitized = $this->validation($request);
 
 
 
@@ -96,7 +83,17 @@ class MRController extends Controller
 
     public function update(Request $request, MR $mr)
     {
-        dd($request);
+        $sanitized = $this->validation($request);
+
+        $file = storage_path('/app/public/mrlist/'.$mr->image);
+        if(is_file($file)){
+            unlink($file);
+        }
+
+        $sanitized['image'] = 'mr_'.$request->code.'_'.Carbon::now()->timestamp.'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image')->storeAs('public/mrlist',$sanitized['image']);
+        $mr->update($sanitized);
+        return redirect()->back();
     }
 
 
@@ -105,5 +102,24 @@ class MRController extends Controller
         dd($mr);
         $mr->delete();
         return redirect()->back();
+    }
+
+    public function validation($request)
+    {
+       return $sanitized = $request->validate([
+            'code'=>'required',
+            'name'=>'required',
+            'address1'=>'required',
+            'address2'=>'sometimes',
+            'address3'=>'sometimes',
+            'contact1'=>'required',
+            'contact2'=>'sometimes',
+            'contact3'=>'sometimes',
+            'email1'=>'required',
+            'email2'=>'sometimes',
+            'email3'=>'sometimes',
+            'fax'=>'sometimes',
+            'image'=>'required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
     }
 }

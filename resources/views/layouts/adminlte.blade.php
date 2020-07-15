@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 @section('adminlte_css')
     <link rel="stylesheet" href="/css/adminlte/custom.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @endsection
 @section('content_top_nav_left')
     <li class="nav-item d-none d-sm-inline-block">
@@ -103,6 +104,3 @@
 
     @endsection
 
-@section('js')
-    <script src="/js/app.js"></script>
-    @endsection

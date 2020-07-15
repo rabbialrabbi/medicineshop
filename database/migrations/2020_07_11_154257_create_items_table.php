@@ -15,9 +15,9 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->integer('item_type_id')->unsigned();
-            $table->integer('generic_id')->unsigned();
-            $table->integer('brand_id')->unsigned();
+            $table->bigInteger('item_type_id')->unsigned();
+            $table->bigInteger('generic_id')->unsigned();
+            $table->bigInteger('brand_id')->unsigned();
             $table->string('code');
             $table->string('name');
             $table->string('size');
@@ -26,6 +26,10 @@ class CreateItemsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->timestamps();
+            $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('generic_id')->references('id')->on('generics')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('restrict')->onUpdate('cascade');
+
         });
     }
 
