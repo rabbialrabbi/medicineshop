@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 @section('adminlte_css')
-    <link rel="stylesheet" href="/css/adminlte/custom.css">
+    <link rel="stylesheet" href="{{asset('/css/adminlte/custom.css')}}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @endsection
 @section('content_top_nav_left')
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{route('home.view')}}" class="nav-link">Home</a>
     </li>
 @endsection
 

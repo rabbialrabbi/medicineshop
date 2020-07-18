@@ -84,13 +84,10 @@ class ItemController extends Controller
 
     public function update(Request $request, Item $item)
     {
-//        dd($request->all());
+
         $sanitized = $this->validation($request);
 
-        $file = storage_path('/app/public/item/'.$item->image);
-        if(is_file($file)){
-            unlink($file);
-        }
+        $this->deleteImageFromStorage($item->image);
 
         $sanitized['image'] = 'item_'.$request->code.'_'.Carbon::now()->timestamp.'.'.$request->file('image')->getClientOriginalExtension();
         $request->file('image')->storeAs('public/item',$sanitized['image']);
@@ -102,6 +99,7 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         dd('Delete');
+        $this->deleteImageFromStorage($item->image);
         $item->delete();
         return redirect()->back();
     }
@@ -120,5 +118,13 @@ class ItemController extends Controller
             'description'=>'required',
             'image'=>'required|image|mimes:png,jpg,jpeg',
         ]);
+    }
+
+    public function deleteImageFromStorage($image)
+    {
+        $file = storage_path('/app/public/item/'.$image);
+        if(is_file($file)){
+            unlink($file);
+        }
     }
 }

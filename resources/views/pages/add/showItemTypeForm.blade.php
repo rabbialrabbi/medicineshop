@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title','ItemType')
 
 @section('content_header')
     <h1 style="text-align: center">Item Type Input Form</h1>

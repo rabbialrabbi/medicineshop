@@ -15,7 +15,7 @@ class GenericController extends Controller
 
     public function create()
     {
-        $data =  Generic::orderBy('created_at', 'desc')->get();
+        $data =  Generic::orderBy('name')->get();
         return view('pages.add.showGenericForm',[
             'items'=>$data
         ]);
@@ -48,14 +48,23 @@ class GenericController extends Controller
 
     public function update(Request $request, Generic $generic)
     {
-        if($generic->status == 'Active'){
-            $generic->status = "Inactive";
+//        dd($request->all());
+        if(!is_null($request->status)){
+            if($generic->status == 'Active'){
+                $generic->status = "Inactive";
+                $generic->save();
+                return redirect()->back();
+            }
+
+            $generic->status = "Active";
             $generic->save();
-            return redirect()->back();
+        }
+        if(!is_null($request->name)){
+
+            $generic->name = $request->name;
+            $generic->save();
         }
 
-        $generic->status = "Active";
-        $generic->save();
         return redirect()->back();
     }
 

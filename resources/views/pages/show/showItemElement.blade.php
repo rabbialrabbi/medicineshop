@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title','Item Show')
 
 @section('content_header')
     <h1 class="pt-3" style="text-align: center">{{$item->name}}</h1>

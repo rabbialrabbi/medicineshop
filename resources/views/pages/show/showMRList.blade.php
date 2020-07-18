@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title','MR List')
 
 @section('content_header')
     <h1 style="text-align: center">MR List</h1>

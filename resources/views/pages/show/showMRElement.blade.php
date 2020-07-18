@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title','MR Show')
 
 @section('content_header')
     <h1 class="pt-3" style="text-align: center">{{$mr->name}}</h1>

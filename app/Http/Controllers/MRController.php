@@ -56,8 +56,6 @@ class MRController extends Controller
 
         $sanitized = $this->validation($request);
 
-
-
         $sanitized['image'] = 'mr_'.$request->code.'_'.Carbon::now()->timestamp.'.'.$request->file('image')->getClientOriginalExtension();
         $request->file('image')->storeAs('public/mrlist',$sanitized['image']);
         $result = MR::create($sanitized);
@@ -85,10 +83,7 @@ class MRController extends Controller
     {
         $sanitized = $this->validation($request);
 
-        $file = storage_path('/app/public/mrlist/'.$mr->image);
-        if(is_file($file)){
-            unlink($file);
-        }
+        $this->deleteImageFromStorage($mr->image);
 
         $sanitized['image'] = 'mr_'.$request->code.'_'.Carbon::now()->timestamp.'.'.$request->file('image')->getClientOriginalExtension();
         $request->file('image')->storeAs('public/mrlist',$sanitized['image']);
@@ -100,6 +95,7 @@ class MRController extends Controller
     public function destroy(MR $mr)
     {
         dd($mr);
+        $this->deleteImageFromStorage($mr->image);
         $mr->delete();
         return redirect()->back();
     }
@@ -121,5 +117,13 @@ class MRController extends Controller
             'fax'=>'sometimes',
             'image'=>'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
+    }
+
+    public function deleteImageFromStorage($image)
+    {
+        $file = storage_path('/app/public/mrlist/'.$image);
+        if(is_file($file)){
+            unlink($file);
+        }
     }
 }

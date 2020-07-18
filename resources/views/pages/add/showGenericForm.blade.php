@@ -1,3 +1,4 @@
+
 @extends('layouts.adminlte')
 
 @section('title','Generic')
@@ -38,26 +39,27 @@
 
     <div class="container">
         <h4 style="text-align: center; padding: 30px 0 10px 0">Generic List</h4>
-        <div class=" card card-warning card-outline">
+        <div class=" card card-warning card-outline ">
             <div class="card-header">
-                <h3 class="card-title">Generic List</h3>
+<!--                <h3 class="card-title">Generic List</h3>-->
 
-<!--                Search Generic form llist-->
-
-{{--                <div class="card-tools">--}}
-{{--                    <div class="input-group input-group-sm">--}}
-{{--                        <input type="text" class="form-control" placeholder="Search Generic">--}}
-{{--                        <div class="input-group-append">--}}
-{{--                            <div class="btn btn-primary">--}}
-{{--                                <i class="fas fa-search"></i>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div class="card-tools pr-5">
+                    <a href="#">View</a>
+                </div>
             </div>
 
                 <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Generic Name</th>
+                            <th>Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                        </thead>
                         <tbody>
                         @foreach($items as $g)
                             <tr>
@@ -65,15 +67,28 @@
                                 </td>
                                 <td class="mailbox-star"></td>
                                 <td class="mailbox-name"></td>
-                                <td class="mailbox-date">{{$g->name}}</td>
+                                <td id="table-show_name" class="mailbox-date">
+                                    <div id="table-show_name-data{{$g->id}}">{{$g->name}}</div>
+                                    <form id="table-show_name-form{{$g->id}}" action="{{route('generic.update',['generic'=>$g->id])}}" method="post" style="display: none">
+                                        @csrf
+                                        @method('PATCH')
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" name="name" class="form-control" value="{{$g->name}}" placeholder="{{$g->name}}">
+                                            <div class="input-group-append" onclick="event.preventDefault(); document.getElementById('table-show_name-form{{$g->id}}').submit();">
+                                                <div class="btn btn-primary">
+                                                    <i class="fas fa-plus" ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
                                 <td class="mailbox-attachment">
                                     <a class="" style="cursor: pointer" onclick="event.preventDefault(); document.getElementById('status-{{$g->id}}').submit();">
                                         @if($g->status == 'Inactive')
                                             <span class="badge-btn" style="background-color: lightgrey" >{{$g->status}}</span>
                                         @else
-                                            <span class="badge-btn bg-success" >{{$g->status}}</span>
+                                            <span class="badge-btn bg-success px-3" >{{$g->status}}</span>
                                         @endif
-
                                     </a>
                                     <form id="status-{{$g->id}}" action="{{ route('generic.update',['generic'=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
@@ -82,14 +97,17 @@
                                     </form>
 
                                 </td>
-                                <td class="mailbox-date text-center">
+                                <td class="mailbox-date text-center table-action">
                                     <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
-                                        <i class="fa fa-times text-danger" aria-hidden="true"></i>
+                                        <i class="fa fa-times table-action_delete" aria-hidden="true" ></i>
                                     </a>
                                     <form id="delete-generic{{$g->id}}" action="{{ route('generic.destroy',['generic'=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('delete')
                                     </form>
+                                    <a class="pl-3">
+                                        <i id="table-action_edit{{$g->id}}" class="fas fa-edit table-action_edit" key="{{$g->id}}"></i>
+                                    </a>
                                 </td>
                             </tr>
                             @endforeach
@@ -100,5 +118,20 @@
     </div>
 
 @endsection
+
+@section('adminlte_js')
+{{--    <script src="{{asset('js/app.js')}}"></script>--}}
+<script>
+
+    @foreach($items as $i)
+    $('#table-action_edit{{$i->id}}').click(function () {
+        $('#table-show_name-data{{$i->id}}').toggle()
+        $('#table-show_name-form{{$i->id}}').toggle()
+    })
+@endforeach
+
+</script>
+@endsection
+
 
 

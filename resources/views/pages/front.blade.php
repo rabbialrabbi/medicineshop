@@ -7,6 +7,10 @@
         </div>
     </section>
 
+    <section>
+{{--        <shopping-chart></shopping-chart>--}}
+    </section>
+
     <section class="prod">
         <div class="container">
 

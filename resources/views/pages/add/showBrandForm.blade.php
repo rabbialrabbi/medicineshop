@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title','Brand')
 
 @section('content_header')
     <h1 style="text-align: center">Brand Input Form</h1>
