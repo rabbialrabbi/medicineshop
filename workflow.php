@@ -2,13 +2,14 @@
 
     Design
 
+ // Database Design for order place
+ // Pdf Generator
+ // Email Verification
+ // Multi language Setup
+
  // Roll Type Auth
  // MR page Design (Add Card)
- // Multi language Setup
- // Email Verification
-
  // Relation with cascade
- // Database Design
  // Multi auth Structure setup
  // Add Form design
 

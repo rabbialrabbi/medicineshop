@@ -7,6 +7,7 @@ use App\Generic;
 use App\Item;
 use App\ItemType;
 use App\MR;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -23,7 +24,7 @@ class AdminController extends Controller
                 'itemType'=>$itemType,
                 'brand'=>$brand,
                 'generic'=>$generic,
-                'mr'=>$mr
+                'mr'=>$mr,
             ]);
     }
 }

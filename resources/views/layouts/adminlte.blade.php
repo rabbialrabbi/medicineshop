@@ -10,28 +10,43 @@
 @endsection
 
 @section('content_top_nav_right')
+
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
+            <span class="badge badge-danger navbar-badge">{{$users->count()}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-                <!-- Message Start -->
-                <div class="media">
-                    <img src="images/user.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                    <div class="media-body">
-                        <h3 class="dropdown-item-title">
-                            Brad Diesel
-                            <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                        </h3>
-                        <p class="text-sm">Call me whenever you can...</p>
-                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+
+            @foreach($users as $u)
+                <div href="#" class="dropdown-item">
+
+                    <!-- Message Start -->
+                    <div class="media">
+                        <img src="{{asset('images/user.png')}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <div class="media-body">
+                            <h3 class="dropdown-item-title">
+                                {{$u->name}}
+                            </h3>
+                            <p class="text-sm">Please Accept my ...</p>
+                            <p class="text-sm text-muted">
+                                <i class="fas fa-user-plus" onclick="event.preventDefault();document.getElementById('include_user{{$u->id}}').submit();"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </p>
+                            <form id="include_user{{$u->id}}" action="{{ route('mr.create') }}" method="GET" style="display: none;">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{$u->id}}">
+                                <input type="hidden" name="name" value="{{$u->name}}">
+                                <input type="hidden" name="email" value="{{$u->email}}">
+                            </form>
+                        </div>
                     </div>
+                    <!-- Message End -->
                 </div>
-                <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
+            @endforeach
+
+
             <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">

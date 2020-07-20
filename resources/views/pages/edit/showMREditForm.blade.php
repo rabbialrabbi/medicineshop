@@ -19,6 +19,10 @@
                     @method('PATCH')
                     <div class="card-body">
                         <div class="row">
+
+                            <!--Input Id From user table-->
+                            <input type="hidden" name="user_id" class="form-control" value="{{$mr->user_id}}">
+
                             <div class="col-sm-6 col-md-8">
                                 <div class="form-group">
                                     <label for="exampleInputName">MR Name</label>
@@ -208,7 +212,6 @@
                                         </div>
                                     </div>`);
                 }
-
             });
 
             $("#addition_email").click(function () {

@@ -2,6 +2,10 @@
 
 @section('title','Generic')
 
+@section('nav_item_msg')
+
+    @endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-3 col-6">

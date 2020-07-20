@@ -16,10 +16,22 @@
                 @csrf
                 <div class="card-body">
                     <div class="row">
+
+                        <!--Input Id From user table-->
+                        @if(is_null($inputUser))
+                            <input type="hidden" name="user_id" value="none">
+                        @else
+                            <input type="hidden" name="user_id" class="form-control" value="{{$inputUser->user_id}}" id="exampleInputEmail1">
+                        @endif
+
                         <div class="col-sm-6 col-md-8">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">MR Name</label>
+                                @if(is_null($inputUser))
                                 <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter MR Name">
+                                    @else
+                                    <input type="text" name="name" class="form-control" value="{{$inputUser->name}}" id="exampleInputEmail1">
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -62,7 +74,12 @@
                                 <label for="exampleInputEmail1">Email</label>
                                 <div class="row">
                                     <div class="col-sm-10">
-                                        <input type="text" name="email1" class="form-control" id="exampleInputEmail" placeholder="Enter Email1">
+                                        @if(is_null($inputUser))
+                                            <input type="text" name="email1" class="form-control" id="exampleInputEmail" placeholder="Enter Email1">
+                                        @else
+                                            <input type="text" name="email1" class="form-control" value="{{$inputUser->email}}" >
+                                        @endif
+
                                     </div>
                                     <div  class="col-sm-1 align-self-center">
                                         <i class="fas fa-plus text-success" id="addition_email"></i>
@@ -80,9 +97,6 @@
                                     <div class="col-sm-12">
                                         <input type="text" name="fax" class="form-control" id="exampleInputEmail1" placeholder="Enter Fax">
                                     </div>
-{{--                                    <div class="col-sm-1 align-self-center text-center">--}}
-{{--                                        <i class="fas fa-plus"></i>--}}
-{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -111,6 +125,14 @@
                         <li>{{$error}}</li>
                     </ul>
                 @endforeach
+            </div>
+        @endif
+        @if (Session::has('message'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>ERROR: </strong> {{Session::get('message')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
     </div>

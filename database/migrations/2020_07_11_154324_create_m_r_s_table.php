@@ -17,18 +17,20 @@ class CreateMRSTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('name');
+            $table->bigInteger('user_id')->unsigned();
             $table->string('address1')->nullable();
             $table->string('address2')->nullable();
             $table->string('address3')->nullable();
             $table->string('contact1')->nullable();
             $table->string('contact2')->nullable();
             $table->string('contact3')->nullable();
-            $table->string('email1')->nullable();
+            $table->string('email1')->unique();
             $table->string('email2')->nullable();
             $table->string('email3')->nullable();
             $table->string('fax')->nullable();
             $table->string('image');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
