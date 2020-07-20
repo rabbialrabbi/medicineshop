@@ -1918,8 +1918,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CartRow",
+  props: ['product'],
   data: function data() {
     return {
       quantity: 0
@@ -1927,7 +1930,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     total: function total() {
-      return this.quantity * 10;
+      return this.quantity * this.product.unit_price;
     }
   },
   methods: {
@@ -1935,8 +1938,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    quantity: function quantity(value) {
-      this.$emit('update', value * 10);
+    total: function total(value) {
+      this.$emit('update', value);
       document.cookie = 'product1=' + value;
     }
   }
@@ -2017,17 +2020,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShoppingChart",
   data: function data() {
     return {
-      showCart: false,
+      showCart: true,
       subTotal: [],
       grandTotal: 0,
-      testData: 'VungVang'
+      testData: 'VungVang',
+      orderList: [{
+        item_id: '2',
+        name: 'Rooh Afza',
+        unit_price: 150
+      }, {
+        item_id: '3',
+        name: 'Honey',
+        unit_price: 250
+      }, {
+        item_id: '4',
+        name: 'Vungvang',
+        unit_price: 100
+      }]
     };
   },
+  props: ['csrf'],
   watch: {
     subTotal: function subTotal(value) {}
   },
@@ -2050,6 +2090,10 @@ __webpack_require__.r(__webpack_exports__);
         console.log(document.cookie // .split('; ')
         // .find(row => row.startsWith('name'))
         // .split('=')[1]
+        // (function(){
+        //     var myObject = JSON.parse('{"id":1,"gender":"male"}');
+        //     var e = 'Thu Nov 26 2017 15:44:38'; document.cookie = 'myObj='+ JSON.stringify(myObject) +';expires=' + e;
+        // })()
         );
       } else {}
     }
@@ -6503,7 +6547,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".shopping-chart[data-v-321a17fb] {\n  position: fixed;\n  width: 30%;\n  top: 20%;\n  right: 5px;\n  z-index: 99;\n}\n.shopping-chart_component[data-v-321a17fb] {\n  text-align: right;\n}\n.shopping-chart i[data-v-321a17fb] {\n  padding: 8px;\n  color: #343a40;\n  font-size: 1.5rem;\n  background-color: lightgreen;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.shopping-list[data-v-321a17fb] {\n  width: 100%;\n  text-align: center;\n  background-color: #fff;\n  border-radius: 5px;\n  padding: 10px;\n}", ""]);
+exports.push([module.i, ".shopping-chart[data-v-321a17fb] {\n  position: fixed;\n  width: 30%;\n  top: 20%;\n  right: 5px;\n  z-index: 99;\n}\n.shopping-chart_details[data-v-321a17fb] {\n  text-align: left;\n}\n.shopping-chart_order input[data-v-321a17fb] {\n  text-align: center;\n  width: 70%;\n  border: none;\n}\n.shopping-chart_header div[data-v-321a17fb] {\n  font-weight: bolder;\n  margin-top: 10px;\n  margin-bottom: 20px;\n}\n.shopping-chart_component[data-v-321a17fb] {\n  text-align: right;\n}\n.shopping-chart i[data-v-321a17fb] {\n  padding: 8px;\n  color: #343a40;\n  font-size: 1.5rem;\n  background-color: lightgreen;\n  border-radius: 5px;\n  cursor: pointer;\n}\n.shopping-list[data-v-321a17fb] {\n  width: 100%;\n  text-align: center;\n  background-color: #fff;\n  border-radius: 5px;\n  padding: 10px;\n}", ""]);
 
 // exports
 
@@ -6522,7 +6566,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#input[data-v-6bbc8202] {\n    width: 50px;\n    border: 1px solid lightgrey;\n}\n#input[data-v-6bbc8202]:focus {\n    outline:none;\n    border: 1px solid gray;\n}\n", ""]);
+exports.push([module.i, "\n#input[data-v-6bbc8202] {\n    width: 50px;\n    border: 1px solid lightgrey;\n}\n#input[data-v-6bbc8202]:focus {\n    outline:none;\n    border: 1px solid gray;\n}\n/*.cart-row{*/\n/*    width: 100%;*/\n/*    padding-left: 5%;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -38298,10 +38342,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("tr", [
-    _c("td", [_vm._v("Product")]),
+  return _c("div", { staticClass: "row cart-row" }, [
+    _c("div", { staticClass: "col" }, [_vm._v(_vm._s(_vm.product.name))]),
     _vm._v(" "),
-    _c("td", [
+    _c("div", { staticClass: "col" }, [
       _c("input", {
         directives: [
           {
@@ -38311,7 +38355,12 @@ var render = function() {
             expression: "quantity"
           }
         ],
-        attrs: { id: "input", type: "number", min: "1" },
+        attrs: {
+          id: "input",
+          type: "number",
+          min: "1",
+          name: _vm.product.item_id
+        },
         domProps: { value: _vm.quantity },
         on: {
           input: function($event) {
@@ -38324,9 +38373,9 @@ var render = function() {
       })
     ]),
     _vm._v(" "),
-    _c("td", [_vm._v("10")]),
+    _c("div", { staticClass: "col" }, [_vm._v(_vm._s(_vm.product.unit_price))]),
     _vm._v(" "),
-    _c("td", [_vm._v(_vm._s(_vm.total))])
+    _c("div", { staticClass: "col" }, [_vm._v(_vm._s(_vm.total))])
   ])
 }
 var staticRenderFns = []
@@ -38428,35 +38477,57 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c("table", { staticClass: "table table-hover" }, [
-          _vm._m(1),
+        _c("form", { attrs: { action: "/order", method: "POST" } }, [
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.csrf }
+          }),
           _vm._v(" "),
           _c(
-            "tbody",
+            "div",
+            { staticClass: "shopping-chart_details" },
             [
-              _c("cart-row", {
-                on: {
-                  update: function($event) {
-                    _vm.subTotal[0] = $event
-                    _vm.totalUpdate()
-                  }
-                }
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._l(_vm.orderList, function(order, index) {
+                return _c(
+                  "div",
+                  [
+                    _c("cart-row", {
+                      attrs: { product: order },
+                      on: {
+                        update: function($event) {
+                          _vm.subTotal[index] = $event
+                          _vm.totalUpdate()
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("hr")
+                  ],
+                  1
+                )
               }),
               _vm._v(" "),
-              _c("cart-row", {
-                on: {
-                  update: function($event) {
-                    _vm.subTotal[1] = $event
-                    _vm.totalUpdate()
-                  }
-                }
-              })
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _vm._v(_vm._s(_vm.grandTotal))
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
             ],
-            1
+            2
           )
-        ]),
-        _vm._v(" "),
-        _c("div", [_vm._v(_vm._s(_vm.grandTotal))])
+        ])
       ]
     )
   ])
@@ -38476,15 +38547,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Product")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Quantity")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Unit Price")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Total")])
+    return _c("div", { staticClass: "row shopping-chart_user " }, [
+      _c("div", { staticClass: "col-8" }, [
+        _vm._v(
+          "\n                        Customer Name :\n                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4 shopping-chart_order" }, [
+        _c("input", {
+          attrs: { type: "text", name: "order_name", value: "MS-5890" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row shopping-chart_header" }, [
+      _c("div", { staticClass: "col" }, [_vm._v("Product")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [_vm._v("Quantity")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [_vm._v("Unit Price")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [_vm._v("Total")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [_c("button", [_vm._v("Clear")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Order")])
       ])
     ])
   }

@@ -6,21 +6,44 @@
                 <h3>Welcome to MedicineShop</h3>
                 <p>You currently have 0 item in you chart</p>
             </div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
-                <tbody>
-                <cart-row @update="subTotal[0]=$event; totalUpdate();"></cart-row>
-                <cart-row @update="subTotal[1]=$event; totalUpdate();"></cart-row>
-                </tbody>
-            </table>
-            <div>{{grandTotal}}</div>
+
+            <form action='/order' method="POST">
+                <!-- CSRF Token -->
+                <input type="hidden" name="_token" :value="csrf">
+
+                <div class="shopping-chart_details">
+                    <div class="row shopping-chart_user ">
+                        <div class="col-8">
+                            Customer Name :
+                        </div>
+                        <div class="col-4 shopping-chart_order">
+                            <input type="text" name="order_name" value="MS-5890">
+                        </div>
+                    </div>
+                    <div class="row shopping-chart_header">
+                        <div class="col">Product</div>
+                        <div class="col">Quantity</div>
+                        <div class="col">Unit Price</div>
+                        <div class="col">Total</div>
+                    </div>
+                    <div v-for="(order,index) in orderList">
+                        <cart-row @update="subTotal[index]=$event; totalUpdate();" :product="order"></cart-row>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col">{{grandTotal}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col"><button>Clear</button></div>
+                        <div class="col"></div>
+                        <div class="col"><button type="submit">Order</button></div>
+                    </div>
+                </div>
+
+            </form>
 
         </div>
 
@@ -34,15 +57,18 @@
         name: "ShoppingChart",
         data(){
             return {
-                showCart : false,
+                showCart : true,
                 subTotal:[],
                 grandTotal:0,
                 testData:'VungVang',
                 orderList:[
-                    {id:'',name:'',price:'',quantity:''}
+                    {item_id:'2',name:'Rooh Afza',unit_price:150},
+                    {item_id:'3',name:'Honey',unit_price:250},
+                    {item_id:'4',name:'Vungvang',unit_price:100},
                 ]
             }
         },
+        props:['csrf'],
         watch:{
           subTotal(value){
           }
@@ -66,6 +92,10 @@
                         // .split('; ')
                         // .find(row => row.startsWith('name'))
                         // .split('=')[1]
+                        // (function(){
+                        //     var myObject = JSON.parse('{"id":1,"gender":"male"}');
+                        //     var e = 'Thu Nov 26 2017 15:44:38'; document.cookie = 'myObj='+ JSON.stringify(myObject) +';expires=' + e;
+                        // })()
                     )
                 }else {
 
@@ -88,6 +118,23 @@
         top: 20%;
         right:5px;
         z-index: 99;
+        &_details{
+            text-align: left;
+        }
+
+        &_order{
+            input {
+                text-align: center;
+                width: 70%;
+                border: none;
+            }
+        }
+
+        &_header div{
+            font-weight: bolder;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
         &_component {
             text-align: right;
         }
@@ -107,4 +154,5 @@
         border-radius: 5px;
         padding: 10px;
     }
+
 </style>

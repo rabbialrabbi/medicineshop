@@ -24,7 +24,6 @@ class CustomerMiddleware
                 return route('not.verified');
             }
         }
-
-        return route('login');
+        return redirect()->route('login');
     }
 }

@@ -8,7 +8,7 @@
     </section>
 
     <section>
-        <shopping-chart></shopping-chart>
+        <shopping-chart csrf="{{csrf_token()}}"></shopping-chart>
     </section>
 
     <section class="prod">

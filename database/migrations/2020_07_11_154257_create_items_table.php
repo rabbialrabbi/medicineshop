@@ -22,7 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('size');
             $table->string('dosage')->nullable();
-            $table->string('price');
+            $table->integer('price');
             $table->string('description');
             $table->string('image');
             $table->timestamps();

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\Order;
+use App\OrderDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -24,7 +27,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        dd(request()->except(['_token','order_name']));
     }
 
     /**
@@ -35,7 +38,52 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->order_name);
+        $order_name = $request->order_name;
+        $productList = request()->except(['_token','order_name']);
+
+
+        $request->validate([
+           'order_name'=>'required'
+        ]);
+
+        /* Create Order*/
+        $order_status = Order::create([
+            'order_name'=>$order_name,
+            'user_id'=>Auth::user()->id,
+        ]);
+
+        if(is_null($order_status)){
+            dd('Order insert Error');
+        }
+
+        foreach ($productList as $k=>$i){
+            $list[]=['item'=>Item::findOrFail($k),'quantity'=>$i];
+        }
+
+        if(is_null($list)){
+            dd('Product list create Error');
+        }
+        foreach($list as $l){
+            $insertData[] = [
+                'order_id'=>$order_status->id,
+                'item_id'=>$l['item']->id,
+                'quantity'=>$l['quantity'],
+                'price'=>$l['item']->price
+            ];
+        }
+        if(is_null($insertData)){
+            dd('insert Data create Error');
+        }
+
+        $order_details = OrderDetails::insert($insertData);
+
+        if(is_null($order_details)){
+            dd('insert details create Error');
+        }
+
+        return redirect()->back();
+
     }
 
     /**

@@ -1,16 +1,19 @@
 <template>
-    <tr>
-        <td>Product</td>
-        <td><input id="input" type="number" min="1" v-model="quantity" ></td>
-        <td>10</td>
-        <td>{{total}}</td>
-    </tr>
+    <div class="row cart-row">
+        <div class="col">{{product.name}}</div>
+        <div class="col">
+            <input id="input" type="number" min="1" :name="product.item_id" v-model="quantity" >
+        </div>
+        <div class="col">{{product.unit_price}}</div>
+        <div class="col">{{total}}</div>
+    </div>
 
 </template>
 
 <script>
     export default {
         name: "CartRow",
+        props:['product'],
         data(){
             return{
                 quantity:0,
@@ -18,7 +21,7 @@
         },
         computed:{
             total(){
-              return this.quantity*10
+              return this.quantity* this.product.unit_price
             }
         },
         methods:{
@@ -27,9 +30,9 @@
             }
         },
         watch:{
-            quantity(value){
+            total(value){
 
-                this.$emit('update', value*10)
+                this.$emit('update', value)
                 document.cookie = 'product1='+value
 
             }
@@ -46,4 +49,8 @@
         outline:none;
         border: 1px solid gray;
     }
+    /*.cart-row{*/
+    /*    width: 100%;*/
+    /*    padding-left: 5%;*/
+    /*}*/
 </style>
