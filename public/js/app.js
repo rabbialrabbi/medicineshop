@@ -1940,7 +1940,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     total: function total(value) {
-      console.log(value);
       this.$emit('update', value); // document.cookie = 'product1='+value
     }
   }
@@ -2074,7 +2073,9 @@ __webpack_require__.r(__webpack_exports__);
       var total = 0;
 
       for (var i = 0; i < this.subTotal.length; i++) {
-        total += this.subTotal[i];
+        if (typeof this.subTotal[i] !== "undefined") {
+          total += this.subTotal[i];
+        }
       }
 
       this.grandTotal = total;

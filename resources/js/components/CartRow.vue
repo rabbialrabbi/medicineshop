@@ -32,7 +32,6 @@
         },
         watch:{
             total(value){
-                console.log(value)
 
                 this.$emit('update', value)
                 // document.cookie = 'product1='+value
