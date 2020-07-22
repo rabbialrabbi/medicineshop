@@ -8,7 +8,10 @@
     </section>
 
     <section>
-        <shopping-chart csrf="{{csrf_token()}}"></shopping-chart>
+        <shopping-chart csrf="{{csrf_token()}}"
+                        :product_list="{{json_encode(session()->get('product_list'))}}"
+                        user="{{Auth::user()->name}}"
+        ></shopping-chart>
     </section>
 
     <section class="prod">
@@ -19,140 +22,9 @@
                 <div class="u-line"></div>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
+            <product-list :product_list="{{$productList}}"></product-list>
 
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-6 col-lg-4 col-xl-3">
-                    <div class="prod-item">
-                        <img src="images/medikit/syrup.jpg" alt="Syrup">
-                        <hr>
-                        <div class="prod-item_info">
-                            <h5 class="prod-item_info-header">VungVang Syrup</h5>
-                            <p class="prod-item_info-body">VungVagci DyHidroCloride</p>
-                            <p class="prod-item_info-body">Code : 25817</p>
-                            <p class="prod-item_info-body">Brand : Vungvang</p>
-                            <p class="prod-item_info-body">Size : Very Big</p>
-                            <hr>
-                            <div class="row prod-item_info-price">
-                                <div class="col-6">TK 800</div>
-                                <div class="col-6 prod-item_info-price-logo"><button><i class="fa fa-shopping-cart"></i></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </section>

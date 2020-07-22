@@ -6,6 +6,7 @@
         </div>
         <div class="col">{{product.unit_price}}</div>
         <div class="col">{{total}}</div>
+        <div class="col"><a :href="'/cart/delete/'+product.item_id"><i class="fas fa-trash-alt"></i></a></div>
     </div>
 
 </template>
@@ -31,9 +32,10 @@
         },
         watch:{
             total(value){
+                console.log(value)
 
                 this.$emit('update', value)
-                document.cookie = 'product1='+value
+                // document.cookie = 'product1='+value
 
             }
         }

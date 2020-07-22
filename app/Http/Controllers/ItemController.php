@@ -98,7 +98,6 @@ class ItemController extends Controller
 
     public function destroy(Item $item)
     {
-        dd('Delete');
         $this->deleteImageFromStorage($item->image);
         $item->delete();
         return redirect()->back();

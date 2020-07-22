@@ -392,6 +392,10 @@ a:hover {
   outline: none;
 }
 
+.prod-item_info-price a {
+  color: #ff7700;
+}
+
 .prod-item_info-price button:hover {
   transform: scale(1.3);
   border: none;

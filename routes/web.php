@@ -15,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::view('/','pages.front')->name('home.view');
+Route::get('/','HomeController@index')->name('home.view');
 
 
 Route::group(['middleware'=>'auth'], function(){
 
     Route::group(['middleware'=>'customer'],function (){
         Route::resource('order','OrderController');
+
+        Route::get('cart/{item}', 'CartController@index')->name('item.show');
+        Route::get('cart/delete/{item}', 'CartController@destroy')->name('item.show');
     });
 
     Route::group(['middleware'=>'admin'], function(){
