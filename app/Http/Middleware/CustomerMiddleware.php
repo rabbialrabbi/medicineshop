@@ -21,7 +21,8 @@ class CustomerMiddleware
             if(Auth::user()->is_verified){
                 return $next($request);
             }else{
-                return route('not.verified');
+//                dd('Working');
+                return redirect()->route('not.verified');
             }
         }
         return redirect()->route('login');
