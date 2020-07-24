@@ -1,10 +1,10 @@
-
+<?php $title = 'generic'?>
 @extends('layouts.adminlte')
 
-@section('title','Generic')
+@section('title',ucfirst($title))
 
 @section('content_header')
-    <h1 style="text-align: center">Generic Input Form</h1>
+    <h1 style="text-align: center">{{ucfirst($title)}} Input Form</h1>
 @endsection
 
 
@@ -13,12 +13,12 @@
         <div class="card card-warning">
             <div class="card-header">
             </div>
-            <form role="form" action="{{route('generic.store')}}" method="post">
+            <form role="form" action="{{route($title.'.store')}}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Generic Name</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter Generic Name">
+                        <label for="exampleInputEmail1">{{ucfirst($title)}} Name</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="{{'Enter '.ucfirst($title).' Name'}}">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -38,24 +38,24 @@
     </div>
 
     <div class="container">
-        <h4 style="text-align: center; padding: 30px 0 10px 0">Generic List</h4>
+        <h4 style="text-align: center; padding: 30px 0 10px 0">{{ucfirst($title)}} List</h4>
         <div class=" card card-warning card-outline ">
             <div class="card-header">
-<!--                <h3 class="card-title">Generic List</h3>-->
+<!--                <h3 class="card-title">{{$title}} List</h3>-->
 
                 <div class="card-tools pr-5">
-                    <a href="#">View</a>
+                    <a href="{{route('generic.pdf')}}">View</a>
                 </div>
             </div>
 
-                <div class="table-responsive mailbox-messages">
-                    <table class="table table-striped">
+            <div class="table-responsive mailbox-messages">
+                <table class="table table-striped">
                         <thead>
                         <tr>
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>Generic Name</th>
+                            <th>{{ucfirst($title)}} Name</th>
                             <th>Status</th>
                             <th class="text-center">Action</th>
                         </tr>
@@ -69,7 +69,7 @@
                                 <td class="mailbox-name"></td>
                                 <td id="table-show_name" class="mailbox-date">
                                     <div id="table-show_name-data{{$g->id}}">{{$g->name}}</div>
-                                    <form id="table-show_name-form{{$g->id}}" action="{{route('generic.update',['generic'=>$g->id])}}" method="post" style="display: none">
+                                    <form id="table-show_name-form{{$g->id}}" action="{{route($title.'.update',[$title=>$g->id])}}" method="post" style="display: none">
                                         @csrf
                                         @method('PATCH')
                                         <div class="input-group input-group-sm">
@@ -90,7 +90,7 @@
                                             <span class="badge-btn bg-success px-3" >{{$g->status}}</span>
                                         @endif
                                     </a>
-                                    <form id="status-{{$g->id}}" action="{{ route('generic.update',['generic'=>$g->id]) }}" method="POST" style="display: none;">
+                                    <form id="status-{{$g->id}}" action="{{ route($title.'.update',[$title=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value="Inactive">
@@ -98,10 +98,10 @@
 
                                 </td>
                                 <td class="mailbox-date text-center table-action">
-                                    <a class="" onclick="event.preventDefault(); document.getElementById('delete-generic{{$g->id}}').submit();">
+                                    <a class="" onclick="event.preventDefault(); document.getElementById('delete-item{{$g->id}}').submit();">
                                         <i class="fa fa-times table-action_delete" aria-hidden="true" ></i>
                                     </a>
-                                    <form id="delete-generic{{$g->id}}" action="{{ route('generic.destroy',['generic'=>$g->id]) }}" method="POST" style="display: none;">
+                                    <form id="delete-item{{$g->id}}" action="{{ route($title.'.destroy',[$title=>$g->id]) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('delete')
                                     </form>

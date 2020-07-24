@@ -29,7 +29,6 @@ class CartController extends Controller
 
     public function destroy(Item $item)
     {
-        $delete_item = $this->generate_product($item);
         if (session()->has('product_list')) {
             $product = session()->get('product_list');
             $find_key = array_search($item->id, array_column($product, 'item_id'));
@@ -46,6 +45,16 @@ class CartController extends Controller
 
         return redirect()->route('home.view');
 
+
+    }
+
+    public function clear()
+    {
+        if (session()->has('product_list')) {
+        session()->put('product_list',[]);
+        }
+
+        return redirect()->route('home.view');
 
     }
     public function generate_product($item)

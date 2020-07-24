@@ -302,6 +302,14 @@ return [
                     'url'  => '/mr',
                 ],
                 [
+                    'text' => 'Message',
+                    'url'  => '/message',
+                ],
+                [
+                    'text' => 'Order',
+                    'url'  => '/order',
+                ],
+                [
                     'text' => 'Notice',
                     'url'  => '#',
                 ],

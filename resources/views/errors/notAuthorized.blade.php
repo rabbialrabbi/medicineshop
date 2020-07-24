@@ -138,7 +138,7 @@
         <h2>Oops! Unauthorized</h2>
         <p>You have no permission to access here. Please Contact with admin</p>
         <a href="{{route('home.view')}}">Home</a>
-        <a href="#">Contact</a>
+        <a href="/#contact">Contact</a>
     </div>
 </div>
 

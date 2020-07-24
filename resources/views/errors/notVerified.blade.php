@@ -138,7 +138,7 @@
         <h2>Oops! Unauthorized</h2>
         <p>It might be reason of pending verification. Please try again later or contact with admin for Authorization</p>
         <a href="{{route('home.view')}}">Home</a>
-        <a href="#">Contact</a>
+        <a href="/#contact">Contact</a>
     </div>
 </div>
 

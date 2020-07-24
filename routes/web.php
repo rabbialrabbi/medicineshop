@@ -13,41 +13,53 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+$show = \App\Generic::all();
+Route::view('/pdf/show','pages.pdf.genericPdf',compact('show'));
 
 Route::get('/','HomeController@index')->name('home.view');
+Route::post('/message','MessageController@store')->name('message.store');
 
 
 Route::group(['middleware'=>'auth'], function(){
 
     Route::group(['middleware'=>'customer'],function (){
-        Route::resource('order','OrderController');
+        Route::post('/order','OrderController@store')->name('order.store');
+//        Route::resource('order','OrderController');
 
-        Route::get('cart/{item}', 'CartController@index')->name('item.show');
-        Route::get('cart/delete/{item}', 'CartController@destroy')->name('item.show');
+        Route::get('cart/{item}', 'CartController@index')->name('cart.show');
+        Route::get('cart/delete/{item}', 'CartController@destroy')->name('cart.delete');
+        Route::get('cart/clear/all','CartController@clear')->name('cart.clear');
     });
 
     Route::group(['middleware'=>'admin'], function(){
 
         Route::get('/admin', 'AdminController@index');
+        Route::delete('/admin/{user}', 'AdminController@destroy')->name('admin.delete');
+        Route::get('/message','MessageController@index')->name('message.index');
+        Route::get('/order','OrderController@index')->name('order.index');
+        Route::get('/order/{order}','OrderController@show')->name('order.show');
+        Route::get('/order/print/{order}','OrderController@print')->name('order.print');
 
         Route::group(['prefix'=>'/generic'],function (){
             Route::get('/create', 'GenericController@create')->name('generic.create');
             Route::post('/', 'GenericController@store')->name('generic.store');
             Route::patch('/{generic}', 'GenericController@update')->name('generic.update');
             Route::delete('/{generic}', 'GenericController@destroy')->name('generic.destroy');
+            Route::get('/pdf', 'GenericController@pdf')->name('generic.pdf');
         });
         Route::group(['prefix'=>'/brand'],function (){
             Route::get('/create', 'BrandController@create')->name('brand.create');
             Route::post('/', 'BrandController@store')->name('brand.store');
             Route::patch('/{brand}', 'BrandController@update')->name('brand.update');
             Route::delete('/{brand}', 'BrandController@destroy')->name('brand.destroy');
+            Route::get('/pdf', 'BrandController@pdf')->name('brand.pdf');
         });
         Route::group(['prefix'=>'/item-type'],function (){
             Route::get('/create', 'ItemTypeController@create')->name('itemType.create');
             Route::post('/', 'ItemTypeController@store')->name('itemType.store');
             Route::patch('/{itemType}', 'ItemTypeController@update')->name('itemType.update');
             Route::delete('/{itemType}', 'ItemTypeController@destroy')->name('itemType.destroy');
+            Route::get('/pdf', 'ItemTypeController@pdf')->name('itemType.pdf');
         });
         Route::group(['prefix'=>'/item'],function (){
             Route::get('/', 'ItemController@index')->name('item.index');
@@ -69,9 +81,6 @@ Route::group(['middleware'=>'auth'], function(){
         });
 
     });
-
-
-
 });
 
 

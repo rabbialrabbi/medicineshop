@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->bigInteger('item_type_id')->unsigned();
             $table->bigInteger('generic_id')->unsigned();
             $table->bigInteger('brand_id')->unsigned();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('size');
             $table->string('dosage')->nullable();

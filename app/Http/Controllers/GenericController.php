@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Generic;
+use PDF;
 use Illuminate\Http\Request;
 
 class GenericController extends Controller
@@ -73,5 +74,13 @@ class GenericController extends Controller
     {
         $generic->delete();
         return redirect()->back();
+    }
+
+    public function pdf()
+    {
+        $show['name']= 'Generic List';
+        $show['data'] = Generic::all();
+        $pdf = PDF::loadView('pages.pdf.genericPdf', compact('show'));
+        return $pdf->stream();
     }
 }

@@ -17,7 +17,21 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $key = request()->key ;
+        if(!is_null($key)){
+            $data =  Order::orderBy('created_at', 'desc')
+                ->where('order_name', 'like', '%' . $key . '%')
+                ->get();
+
+            return view('pages.show.showOrderList',[
+                'items'=>$data
+            ]);
+        };
+        $data =  Order::orderBy('created_at', 'desc')->get();
+//        dd($data[0]->order_details);
+        return view('pages.show.showOrderList',[
+            'items'=>$data
+        ]);
     }
 
     /**
@@ -38,7 +52,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->order_name);
         $order_name = $request->order_name;
         $productList = request()->except(['_token','order_name']);
 
@@ -53,17 +66,10 @@ class OrderController extends Controller
             'user_id'=>Auth::user()->id,
         ]);
 
-        if(is_null($order_status)){
-            dd('Order insert Error');
-        }
-
         foreach ($productList as $k=>$i){
             $list[]=['item'=>Item::findOrFail($k),'quantity'=>$i];
         }
 
-        if(is_null($list)){
-            dd('Product list create Error');
-        }
         foreach($list as $l){
             $insertData[] = [
                 'order_id'=>$order_status->id,
@@ -72,14 +78,11 @@ class OrderController extends Controller
                 'price'=>$l['item']->price
             ];
         }
-        if(is_null($insertData)){
-            dd('insert Data create Error');
-        }
 
         $order_details = OrderDetails::insert($insertData);
 
-        if(is_null($order_details)){
-            dd('insert details create Error');
+        if (session()->has('product_list')) {
+            session()->put('product_list',[]);
         }
 
         return redirect()->back();
@@ -94,7 +97,13 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $withModel = $order->load(['order_details.item','user.mr']);
+//        dd($withModel);
+
+
+        return view('pages.show.showOrderElement',[
+            'order'=>$withModel
+        ]);
     }
 
     /**
@@ -129,6 +138,15 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function print(Order $order)
+    {
+        $withModel = $order->load(['order_details.item','user.mr']);
+
+        return view('pages.show.printOrderElement',[
+            'order'=>$withModel
+        ]);
     }
 
 

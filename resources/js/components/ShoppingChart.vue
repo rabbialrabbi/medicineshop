@@ -2,7 +2,7 @@
     <div class="shopping-chart">
         <div class="shopping-chart_component" @click="showCart= !showCart">
             <i class="fa fa-shopping-cart">
-                <span class="badge badge-danger navbar-badge">{{product_list_count}}</span>
+                <span  class="badge badge-danger navbar-badge">{{product_list_count}}</span>
             </i>
 
         </div>
@@ -22,7 +22,7 @@
                             User : {{user}}
                         </div>
                         <div class="col-4 shopping-chart_order">
-                            <input type="text" name="order_name" placeholder="Order Id">
+                            <input type="text" name="order_name" placeholder="Order Id" required>
                         </div>
                     </div>
                     <div class="row shopping-chart_header">
@@ -32,7 +32,7 @@
                         <div class="col">Total</div>
                         <div class="col"></div>
                     </div>
-                    <div v-for="(order,index) in product_list">
+                    <div v-if="product_list" v-for="(order,index) in product_list">
                         <cart-row @update="subTotal[index]=$event; totalUpdate();" :product="order"></cart-row>
                         <hr>
                     </div>
@@ -42,10 +42,9 @@
                         <div class="col"></div>
                         <div class="col">{{grandTotal}}</div>
                     </div>
-                    <div class="row">
-                        <div class="col"><button>Clear</button></div>
-                        <div class="col"></div>
-                        <div class="col"><button type="submit">Order</button></div>
+                    <div class="row text-center pt-5">
+                        <div class="col"><a class="btn btn-danger" href="/cart/clear/all">Clear</a></div>
+                        <div class="col"><button  class="btn btn-success" type="submit">Order</button></div>
                     </div>
                 </div>
 
@@ -76,7 +75,10 @@
         },
         computed:{
           product_list_count(){
-              return Object.keys(this.product_list).length
+              if(this.product_list){
+                  return Object.keys(this.product_list).length
+              }
+              return 0
           }
         },
         methods:{
@@ -124,6 +126,7 @@
         }
         &_component {
             text-align: right;
+
         }
         i {
             padding:8px 2px 8px 8px;

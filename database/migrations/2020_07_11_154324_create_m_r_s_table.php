@@ -15,16 +15,16 @@ class CreateMRSTable extends Migration
     {
         Schema::create('m_r_s', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
             $table->bigInteger('user_id')->unsigned();
-            $table->string('address1')->nullable();
+            $table->string('address1');
             $table->string('address2')->nullable();
             $table->string('address3')->nullable();
-            $table->string('contact1')->nullable();
+            $table->string('contact1');
             $table->string('contact2')->nullable();
             $table->string('contact3')->nullable();
-            $table->string('email1')->unique();
+            $table->string('email1');
             $table->string('email2')->nullable();
             $table->string('email3')->nullable();
             $table->string('fax')->nullable();

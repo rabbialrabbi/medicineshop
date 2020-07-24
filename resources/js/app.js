@@ -1,5 +1,7 @@
 import ShoppingChart from "./components/ShoppingChart";
 import ProductList from "./components/product_list/ProductList";
+import sendMessage from "./components/sendMessage";
+import InvoiceComponent from "./components/invoice/InvoiceComponent";
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -38,6 +40,8 @@ const app = new Vue({
     },
     components: {
         ShoppingChart,
-        ProductList
+        ProductList,
+        sendMessage,
+        InvoiceComponent
     }
 });
