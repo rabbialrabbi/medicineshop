@@ -17,14 +17,14 @@ class CustomerMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::check() && Auth::user()->role_type == 'Admin'){
+            return $next($request);
+        }
 
         if( Auth::check() && Auth::user()->role_type == 'Customer'){
             if(Auth::user()->is_verified){
-                if($locale = session()->get('locale')){
-                    App::setLocale($locale);
-                }
 
-                return $next($request);
+
             }else{
 //                dd('Working');
                 return redirect()->route('not.verified');

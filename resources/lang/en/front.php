@@ -6,7 +6,7 @@ return [
     'home'=>'Home',
     'about_us'=>'About Us',
     'product'=>'Product',
-    'mp_list'=>'MP List',
+    'mr_list'=>'MR List',
     'message'=>'Message',
     'notice'=>'Notice',
     'contact'=>'Contact',

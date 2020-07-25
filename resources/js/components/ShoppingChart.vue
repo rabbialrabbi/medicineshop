@@ -26,11 +26,11 @@
                         </div>
                     </div>
                     <div class="row shopping-chart_header">
-                        <div class="col">Product</div>
-                        <div class="col">Quantity</div>
-                        <div class="col">Unit Price</div>
-                        <div class="col">Total</div>
-                        <div class="col"></div>
+                        <div class="col-4 cart-row_name">Product</div>
+                        <div class="col-2 cart-row_quantity">Quantity</div>
+                        <div class="col-2 cart-row_price">Unit Price</div>
+                        <div class="col-2 cart-row_total">Total</div>
+                        <div class="col-2 cart-row_action"></div>
                     </div>
                     <div v-if="product_list" v-for="(order,index) in product_list">
                         <cart-row @update="subTotal[index]=$event; totalUpdate();" :product="order"></cart-row>
@@ -126,6 +126,8 @@
         }
         &_component {
             text-align: right;
+            margin-bottom: 5px;
+
 
         }
         i {
@@ -135,6 +137,7 @@
             background-color: lightgreen;
             border-radius: 5px;
             cursor: pointer;
+            box-shadow: 0 0 3px 5px lightgreen;
         }
     }
     .navbar-badge{
@@ -147,6 +150,23 @@
         background-color: #fff;
         border-radius: 5px;
         padding: 10px;
-    }
+        box-shadow: 0 0 10px 5px lightgrey;
+    ;
 
+    }
+    .cart-row_name,{
+        padding-left:20px;
+    }
+    .cart-row_price{
+        padding: 0;
+    }
+    .cart-row_quantity{
+        padding: 0;
+    }
+    .cart-row_total{
+        text-align: right;
+    }
+    .cart-row_action{
+        text-align: center;
+    }
 </style>

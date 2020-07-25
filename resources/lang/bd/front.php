@@ -6,7 +6,7 @@ return [
     'home'=>'হোম',
     'about_us'=>'পরিচিতি',
     'product'=>'পণ্য',
-    'mp_list'=>'এমপি তালিকা',
+    'mr_list'=>'এমআর তালিকা',
     'message'=>'বার্তা',
     'notice'=>'নোটিস',
     'contact'=>'যোগাযোগ',

@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center mt-3">
-                                <div class="col-sm-12 col-md-8"><input type="submit" value="Send" ></div>
+                                <div class="col-sm-12 col-md-8"><input style="color: #ff7700;font-weight: bolder" type="submit" value="Send" ></div>
                             </div>
                             <div class=" row justify-content-center" ><span class="message"></span></div>
                         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Exceptions\Debugger;
 use App\Http\Controllers\Controller;
 use App\Mail\EmailSignup;
 use App\Providers\RouteServiceProvider;
@@ -42,6 +43,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
     }
 
     /**
@@ -75,13 +77,14 @@ class RegisterController extends Controller
             'verified_token'=>$token,
         ]);
 
-
         if(!is_null($data)){
                 Mail::to($request->email)->send(
                     new EmailSignup($data,$token)
                 );
+                $debug = new Debugger();
+                $debug->sentMail();
 
-               return redirect()->route('home.show');
+               return redirect()->route('home.view');
             }
 
             return redirect()->route('login');
