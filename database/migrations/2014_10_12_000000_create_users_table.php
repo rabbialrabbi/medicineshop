@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role_type')->default('Customer');
             $table->integer('is_verified')->default(0);
+            $table->string('verified_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,20 +10,24 @@
                 <div class="col-sm-12 col-md-6 ht-link_button">
                     <div class="row">
                         <div ><a href="#">About Us</a><span>|</span></div>
-                        <div ><a href="#">Product Pric List</a><span>|</span></div>
+                        <div ><a href="#">Product Price List</a><span>|</span></div>
                         <div ><a href="#">Contuct Us</a><span>|</span></div>
                         <div ><a href="#">Extra</a><span>|</span></div>
                     </div>
                 </div>
                 <div class="col-6 switch-button d-none d-md-block ">
-                    <span class="switch-text">Bangla</span>
+                    <span class="switch-text">English</span>
                     <label class="switch">
-                        <input type="checkbox">
+                        @if(session()->get('locale') == 'bd')
+                        <input type="checkbox" onclick="window.location.href='{{route("home.view",["locale"=>"en"])}}'" checked>
+                            @else
+                            <input type="checkbox" onclick="window.location.href='{{route("home.view",["locale"=>"bd"])}}'" >
+                        @endif
                         <div>
                             <span></span>
                         </div>
                     </label>
-                    <span class="switch-text">English</span>
+                    <span class="switch-text">বাংলা</span>
                 </div>
             </div>
 
@@ -40,14 +44,14 @@
             <div class="container">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#">{{__('front.home')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="#">{{__('front.about_us')}}</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Product
+                            {{__('front.product')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
@@ -58,7 +62,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            MP List
+                            {{__('front.mp_list')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
@@ -69,7 +73,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Message
+                            {{__('front.message')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Action</a>
@@ -79,17 +83,17 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Notice</a>
+                        <a class="nav-link" href="#">{{__('front.notice')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">{{__('front.contact')}}</a>
                     </li>
                     @if(Auth()->check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{__('front.log_out')}}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -97,7 +101,7 @@
                     </li>
                         @else()
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">LogIn</a>
+                            <a class="nav-link" href="{{route('login')}}">{{__('front.log_in')}}</a>
                         </li>
                     @endif
                 </ul>

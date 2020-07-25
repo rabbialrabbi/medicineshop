@@ -1,5 +1,6 @@
 <?php
 
+use App\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-$show = \App\Generic::all();
+
 Route::view('/pdf/show','pages.pdf.genericPdf',compact('show'));
 
+
 Route::get('/','HomeController@index')->name('home.view');
+
+
+
+
 Route::post('/message','MessageController@store')->name('message.store');
+Route::get('/verify','Auth\RegisterController@validateUser')->name('user.validation');
 
 
 Route::group(['middleware'=>'auth'], function(){
@@ -84,9 +91,13 @@ Route::group(['middleware'=>'auth'], function(){
 });
 
 
+
+
 /*----------------Error Handling-----------------*/
 Route::get('not-verified','ErrorController@notVerified')->name('not.verified')->middleware('auth');
 Route::get('not-authorized','ErrorController@notAuthorized')->name('not.authorized')->middleware('auth');
+
+
 
 
 

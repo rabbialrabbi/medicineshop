@@ -85,7 +85,7 @@ class MRController extends Controller
 
         /*  Verified a user in database*/
         if(!is_null($result)){
-            User::where('id',$sanitized['user_id'])->update(['is_verified'=>1]);
+            User::where('id',$sanitized['user_id'])->update(['is_verified'=>0]);
         }
         return redirect()->back();
     }

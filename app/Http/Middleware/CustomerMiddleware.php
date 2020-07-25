@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerMiddleware
@@ -19,6 +20,10 @@ class CustomerMiddleware
 
         if( Auth::check() && Auth::user()->role_type == 'Customer'){
             if(Auth::user()->is_verified){
+                if($locale = session()->get('locale')){
+                    App::setLocale($locale);
+                }
+
                 return $next($request);
             }else{
 //                dd('Working');

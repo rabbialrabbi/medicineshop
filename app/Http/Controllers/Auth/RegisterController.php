@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailSignup;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -59,15 +62,43 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param Request $request
+     * @return void
      */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $token = Hash::make(time());
+        $data = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+            'verified_token'=>$token,
         ]);
+
+
+        if(!is_null($data)){
+                Mail::to($request->email)->send(
+                    new EmailSignup($data,$token)
+                );
+
+               return redirect()->route('home.show');
+            }
+
+            return redirect()->route('login');
+
+
+    }
+
+    public function validateUser()
+    {
+        $token = request()->data;
+        $user = User::where('verified_token',$token)->update([
+            'is_verified'=>2
+        ]);
+
+        if(is_null($user)){
+            return redirect()->route('login')->with('error','Validation fail');
+        }
+        return redirect()->route('login')->with('message','Validation Successful');
     }
 }
