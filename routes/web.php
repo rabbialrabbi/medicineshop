@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/','HomeController@index')->name('home.view');
+Route::get('/filter','HomeController@filter')->name('front.filter');
 
 
 

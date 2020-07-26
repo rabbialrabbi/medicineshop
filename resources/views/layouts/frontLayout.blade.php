@@ -54,10 +54,13 @@
                             {{__('front.product')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
+                            @foreach($generic as $i)
+                                <a class="dropdown-item" href="{{route('front.filter',['generic'=>$i->id])}}">{{$i->name}}</a>
+                            @endforeach
+
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item text-center" href="#">More</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -65,10 +68,11 @@
                             {{__('front.mr_list')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            @foreach($mr as $i)
+                                <a class="dropdown-item" href="{{route('mr.show',['mr'=>$i->id])}}">{{$i->name}}</a>
+                                @endforeach
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item text-center" href="{{route('mr.index')}}">More</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
