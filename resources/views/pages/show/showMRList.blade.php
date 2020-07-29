@@ -40,7 +40,7 @@
                 </thead>
                 <tbody>
                 @foreach($items as $g)
-                    <tr onclick="window.location='{{route('mr.show',['mr'=>$g->id])}}'">
+                    <tr style="cursor: pointer" onclick="window.location='{{route('mr.show',['mr'=>$g->id])}}'">
                         <td><img src="/storage/mrlist/{{$g->image}}" alt="{{$g->name}}" width="80px" height="80px"></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->name}}</div></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->code}}</div></td>

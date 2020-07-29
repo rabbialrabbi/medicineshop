@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 //font-family: 'Bree Serif', serif;
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+//font-family: 'Courgette', cursive;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+//font-family: 'Roboto', sans-serif;
+
 
 // Variables
 @import 'variables';
@@ -18,3 +23,8 @@
 @import "productList/productList";
 @import "upperFooter/upperFooter";
 @import "footer/footer";
+
+@import "about/about";
+@import "contact/contact";
+@import "mrview/mrview";
+@import "notice/notice";

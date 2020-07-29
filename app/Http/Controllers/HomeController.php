@@ -12,9 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-
         if($locale = request()->input('locale')){
-
             if (! in_array($locale, ['en', 'bd'])) {
                 abort(400);
             }
@@ -22,27 +20,73 @@ class HomeController extends Controller
             session()->put('locale',$locale);
         }
 
-        $productList = Item::with('generic','brand','itemType')->orderBy('name')->get();
-        $mr = MR::all()->take(7);
-        $generic = Generic::all()->take(7);
-//        dd($mr);
+        $productList = $this->productList();
 
-        return view('pages.front',compact('productList','mr','generic'));
+        return view('pages.front',compact('productList'));
 
     }
 
     public function filter(Request $request)
     {
-        $mr = MR::all();
-        $generic = Generic::all();
-        $productList = Item::with('generic','brand','itemType')->orderBy('name')->get();
 
-        if($genericId = $request->input('generic')){
-            $productList = Item::with('generic','brand','itemType')->where('generic_id',$genericId)->orderBy('name')->get();
+        $productList = $this->productList();
 
+        if($itemTypeId = $request->input('itemType')){
+            $productList = Item::with('generic','brand','itemType')->where('item_type_id',$itemTypeId)->orderBy('name')->get();
         }
-//        dd($productList);
 
-        return view('pages.front',compact('productList','mr','generic'));
+        return view('pages.frontFilter',compact('productList'));
+    }
+
+    public function about()
+    {
+        $productList = $this->productList();
+        return view('pages.aboutUs',compact('productList'));
+    }
+
+    public function mrView()
+    {
+        $productList = $this->productList();
+
+        $key = request()->key ;
+        if(!is_null($key)){
+            $items =  MR::orderBy('created_at', 'desc')
+                ->where('code', 'like', '%' . $key . '%')
+                ->orWhere('name', 'like', '%' . $key . '%')
+                ->orWhere('contact1', 'like', '%' . $key . '%')
+                ->get();
+
+            return view('pages.mrview',compact('productList','items'));
+        }
+
+        $items =  MR::orderBy('created_at', 'desc')->get();
+        return view('pages.mrview',compact('productList','mr','generic','items'));
+    }
+    public function contact()
+    {
+        $productList = $this->productList();
+        return view('pages.contact',compact('productList'));
+    }
+
+    public function chairman()
+    {
+        $productList = $this->productList();
+
+        return view('pages.message.chairman',compact('productList'));
+    }
+    public function mdMessage()
+    {
+        $productList = $this->productList();
+        return view('pages.message.md',compact('productList'));
+    }
+    public function edMessage()
+    {
+        $productList = $this->productList();
+        return view('pages.message.ed',compact('productList'));
+    }
+
+    public function productList()
+    {
+       return $productList = Item::with('generic','brand','itemType')->orderBy('name')->get();
     }
 }

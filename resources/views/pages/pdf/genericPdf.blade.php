@@ -39,7 +39,7 @@
 <table>
     <tr>
         <th>Company</th>
-        <th>Contact</th>
+        <th>Status</th>
     </tr>
 
     @foreach($show['data'] as $d)

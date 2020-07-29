@@ -2,6 +2,8 @@
 
 @section('title','Home')
 
+@yield('nav-active')
+
 @section('content')
 
     <div class="ht-link" >
@@ -11,7 +13,7 @@
                     <div class="row">
                         <div ><a href="#">About Us</a><span>|</span></div>
                         <div ><a href="#">Product Price List</a><span>|</span></div>
-                        <div ><a href="#">Contuct Us</a><span>|</span></div>
+                        <div ><a href="#">Contact Us</a><span>|</span></div>
                         <div ><a href="#">Extra</a><span>|</span></div>
                     </div>
                 </div>
@@ -44,53 +46,47 @@
             <div class="container">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">{{__('front.home')}}</a>
+                        <a class="nav-link @yield('home-active')" href="{{route('home.view')}}">{{__('front.home')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.about_us')}}</a>
+                        <a class="nav-link @yield('about-active')" href="{{route('home.about')}}">{{__('front.about_us')}}</a>
                     </li>
+
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle @yield('product-active')" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{__('front.product')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach($generic as $i)
-                                <a class="dropdown-item" href="{{route('front.filter',['generic'=>$i->id])}}">{{$i->name}}</a>
+                            @foreach($itemType as $i)
+                                <a class="dropdown-item" href="{{route('front.filter',['itemType'=>$i->id])}}">{{$i->name}}</a>
                             @endforeach
 
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="#">More</a>
+                            <a class="dropdown-item text-center" href="#">All</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{__('front.mr_list')}}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach($mr as $i)
-                                <a class="dropdown-item" href="{{route('mr.show',['mr'=>$i->id])}}">{{$i->name}}</a>
-                                @endforeach
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="{{route('mr.index')}}">More</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('mr-active')" href="{{route('home.mr')}}">{{__('front.mr_list')}}</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle @yield('message-active')" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{__('front.message')}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="{{route('message.chairman')}}">Chairman message</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="{{route('message.md')}}">MD message</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{route('message.ed')}}">ED message</a>
+
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.notice')}}</a>
+                        <a class="nav-link @yield('notice-active')" href="{{route('notice.index')}}">{{__('front.notice')}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{__('front.contact')}}</a>
+                        <a class="nav-link @yield('contact-active')" href="{{route('home.contact')}}">{{__('front.contact')}}</a>
                     </li>
                     @if(Auth()->check())
                     <li class="nav-item">
@@ -112,6 +108,8 @@
             </div>
         </div>
     </nav>
+
+    @yield('promo')
 
     @yield('body')
 

@@ -1,0 +1,29 @@
+.contact{
+    text-align: center;
+    &-header{
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    &-row{
+
+        margin-bottom: 1px;
+    }
+    &-map{
+        margin-top: 60px;
+    }
+    &-form{
+        color: $darkBack;
+        input,textarea {
+            width: 100%;
+            padding: 5px 10px 5px 20px;
+            background-color: rgba(64,70,76,.05);
+            outline: none;
+            border: none;
+            color: black;
+        }
+        ::placeholder {
+            color: gray;
+            opacity: 1; /* Firefox */
+        }
+    }
+}

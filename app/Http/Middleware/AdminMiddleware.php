@@ -28,7 +28,6 @@ class AdminMiddleware
                 if(Auth::user()->is_verified){
                     return redirect('not-authorized');
                 }
-//                dd('Working');
                return redirect('not-verified');
             }else{
                 dd("Some One Try To login Out of admin and customer");

@@ -64,6 +64,7 @@ class MRController extends Controller
 
         $sanitized = $this->validation($request);
 
+
         if($sanitized['user_id']=='none'){
 
             if(is_null($user = $user->where('email',$sanitized['email1'])->first())){
@@ -85,7 +86,9 @@ class MRController extends Controller
 
         /*  Verified a user in database*/
         if(!is_null($result)){
-            User::where('id',$sanitized['user_id'])->update(['is_verified'=>0]);
+            User::where('id',$sanitized['user_id'])->update(['is_verified'=>1]);
+        }else{
+            dd('not Working');
         }
         return redirect()->back();
     }
@@ -131,7 +134,7 @@ class MRController extends Controller
     {
        return $sanitized = $request->validate([
             'code'=>'required',
-            'user_id'=>'required',
+            'user_id'=>'sometimes',
             'name'=>'required',
             'address1'=>'required',
             'address2'=>'sometimes',

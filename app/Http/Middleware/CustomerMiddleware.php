@@ -23,8 +23,7 @@ class CustomerMiddleware
 
         if( Auth::check() && Auth::user()->role_type == 'Customer'){
             if(Auth::user()->is_verified){
-
-
+                return $next($request);
             }else{
 //                dd('Working');
                 return redirect()->route('not.verified');

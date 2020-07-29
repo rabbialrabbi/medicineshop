@@ -1,13 +1,7 @@
-@extends('layouts.frontLayout')
-
+@extends('layouts.frontWithPromo')
+@section('home-active','active')
 @section('body')
-    <section>
-        <div class="carousel">
-            !! Promotional Add !!
-        </div>
-    </section>
-
-    <section>
+        <section>
         @if(Auth::check() && Auth::user()->is_verified == 1)
         <shopping-chart csrf="{{csrf_token()}}"
                         :product_list="{{json_encode(session()->get('product_list'))}}"

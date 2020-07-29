@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','MR List')
+@section('title','Order List')
 
 @section('content_header')
     <h1 style="text-align: center">Order List</h1>
@@ -14,7 +14,7 @@
             <div class="card-tools">
                 <form id="indexSearch" action="{{route('mr.index')}}" method="get">
                     <div class="input-group input-group-sm">
-                        <input type="text" name="key" class="form-control" placeholder="Search MR">
+                        <input type="text" name="key" class="form-control" placeholder="Search Order">
                         <div class="input-group-append" onclick="event.preventDefault(); document.getElementById('indexSearch').submit();">
                             <div class="btn btn-primary">
                                 <i class="fas fa-search" ></i>
@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                 @foreach($items as $g)
-                    <tr onclick="window.location='{{route('order.show',['order'=>$g->id])}}'">
+                    <tr style="height: 50px;cursor: pointer" onclick="window.location='{{route('order.show',['order'=>$g->id])}}'">
                         <td></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->order_name}}</div></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->user->name}}</div></td>

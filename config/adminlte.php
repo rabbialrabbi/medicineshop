@@ -256,7 +256,7 @@ return [
         ],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'url'  => '/password/reset',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
@@ -285,7 +285,7 @@ return [
                 ],
                 [
                     'text' => 'Add Notice',
-                    'url'  => '#',
+                    'url'  => '/notice/create',
                 ],
             ],
         ],
@@ -308,10 +308,6 @@ return [
                 [
                     'text' => 'Order',
                     'url'  => '/order',
-                ],
-                [
-                    'text' => 'Notice',
-                    'url'  => '#',
                 ],
             ],
         ],

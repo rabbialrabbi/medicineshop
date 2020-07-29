@@ -1,6 +1,6 @@
 <?php
 
-use App\Item;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/','HomeController@index')->name('home.view');
 Route::get('/filter','HomeController@filter')->name('front.filter');
+Route::get('/about','HomeController@about')->name('home.about');
+Route::get('/contact','HomeController@contact')->name('home.contact');
+Route::get('/mr-view','HomeController@mrView')->name('home.mr');
+Route::get('/chairman-message','HomeController@chairman')->name('message.chairman');
+Route::get('/md-message','HomeController@mdMessage')->name('message.md');
+Route::get('/ed-message','HomeController@edMessage')->name('message.ed');
 
-
+Route::get('/notice','NoticeController@index')->name('notice.index');
 
 
 Route::post('/message','MessageController@store')->name('message.store');
@@ -28,15 +34,12 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::group(['middleware'=>'customer'],function (){
         Route::post('/order','OrderController@store')->name('order.store');
-//        Route::resource('order','OrderController');
-
         Route::get('cart/{item}', 'CartController@index')->name('cart.show');
         Route::get('cart/delete/{item}', 'CartController@destroy')->name('cart.delete');
         Route::get('cart/clear/all','CartController@clear')->name('cart.clear');
     });
 
     Route::group(['middleware'=>'admin'], function(){
-
         Route::get('/admin', 'AdminController@index');
         Route::delete('/admin/{user}', 'AdminController@destroy')->name('admin.delete');
         Route::get('/message','MessageController@index')->name('message.index');
@@ -83,6 +86,9 @@ Route::group(['middleware'=>'auth'], function(){
             Route::patch('/{mr}', 'MRController@update')->name('mr.update');
             Route::delete('/{mr}', 'MRController@destroy')->name('mr.destroy');
         });
+
+        Route::get('/notice/create','NoticeController@create')->name('notice.create');
+        Route::post('/notice','NoticeController@store')->name('notice.store');
 
     });
 });

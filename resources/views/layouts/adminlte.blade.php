@@ -51,7 +51,7 @@
             @endforeach
 
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+            <a href="{{route('message.index')}}" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
     </li>
 
@@ -63,12 +63,12 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-item dropdown-header">{{$pending_order->count()+$pending_message->count()}} Notifications</span>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="{{route('order.index')}}" class="dropdown-item">
                 <i class="fas fa-file mr-2"></i>{{$pending_order->count()}} Pending Order
                 <span class="float-right text-muted text-sm"></span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
+            <a href="{{route('message.index')}}" class="dropdown-item">
                 <i class="fas fa-envelope mr-2"></i> {{$pending_message->count()}} new messages
                 <span class="float-right text-muted text-sm"></span>
             </a>

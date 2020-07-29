@@ -142,6 +142,7 @@ class OrderController extends Controller
 
     public function print(Order $order)
     {
+        $order->update(['status'=>'Approve']);
         $withModel = $order->load(['order_details.item','user.mr']);
 
         return view('pages.show.printOrderElement',[

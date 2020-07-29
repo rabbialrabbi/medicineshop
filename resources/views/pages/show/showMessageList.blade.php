@@ -3,14 +3,14 @@
 @section('title','MR List')
 
 @section('content_header')
-    <h1 style="text-align: center">MR List</h1>
+    <h1 style="text-align: center">Message List</h1>
 @endsection
 
 
 @section('content')
     <div class=" card card-warning card-outline">
         <div class="card-header">
-            <h3 class="card-title">MR List</h3>
+            <h3 class="card-title">Message</h3>
 {{--            <div class="card-tools">--}}
 {{--                <form id="indexSearch" action="{{route('mr.index')}}" method="get">--}}
 {{--                    <div class="input-group input-group-sm">--}}
@@ -31,13 +31,13 @@
                 <tr>
                     <th></th>
                     <th>Name</th>
-                    <th>Code</th>
-                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Message</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($items as $g)
-                    <tr style="height: 50px" onclick="window.location='{{route('mr.show',['mr'=>$g->id])}}'">
+                    <tr style="height: 50px;cursor: pointer" onclick="window.location='{{route('mr.show',['mr'=>$g->id])}}'">
                         <td></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->name}}</div></td>
                         <td style="position: relative"> <div style="position: absolute;top: 50%;transform: translateY(-50%)">{{$g->email}}</div></td>

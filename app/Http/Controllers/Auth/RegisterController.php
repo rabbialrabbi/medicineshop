@@ -84,7 +84,7 @@ class RegisterController extends Controller
                 $debug = new Debugger();
                 $debug->sentMail();
 
-               return redirect()->route('home.view');
+               return view('errors.validationRequest');
             }
 
             return redirect()->route('login');
@@ -95,13 +95,14 @@ class RegisterController extends Controller
     public function validateUser()
     {
         $token = request()->data;
+
         $user = User::where('verified_token',$token)->update([
             'is_verified'=>2
         ]);
 
         if(is_null($user)){
-            return redirect()->route('login')->with('error','Validation fail');
+            return view('errors.validationError');
         }
-        return redirect()->route('login')->with('message','Validation Successful');
+        return view('errors.validationSuccess');
     }
 }

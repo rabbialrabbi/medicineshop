@@ -6,7 +6,7 @@ We will let you know when the validation is complete.
 
 
 @component('mail::button', ['url' => route('user.validation',['data'=>$token])])
-Button Text
+Validate
 @endcomponent
 
 Thanks,<br>

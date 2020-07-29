@@ -148,7 +148,7 @@
                 <table class="table table-hover table-striped">
                     <tbody>
                     @foreach($items as $g)
-                        <tr>
+                        <tr onclick="window.location='{{route('mr.show',['mr'=>$g->id])}}'">
                             <td>
                             </td>
                             <td class="mailbox-star"></td>

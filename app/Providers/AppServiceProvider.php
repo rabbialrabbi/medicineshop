@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\ItemType;
 use App\Message;
 use App\Order;
 use App\User;
@@ -35,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('users', User::where('is_verified',2)->get());
         View::share('pending_order', Order::where('status','Pending')->get());
         View::share('pending_message', Message::where('status','Pending')->get());
+        View::share('itemType', ItemType::all());
 
     }
 }
