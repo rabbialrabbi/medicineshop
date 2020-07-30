@@ -45,7 +45,6 @@ class ComposerServiceProvider extends ServiceProvider
                 $debug = new Debugger();
                 $debug->setMsg($msg);
             }
-            dd(User::all());
         }
     }
 }
