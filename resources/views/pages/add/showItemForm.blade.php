@@ -98,8 +98,8 @@
                                 <label for="exampleInputFile">Choose Photo</label>
                                 <div class="input-group">
                                     <div class="input-group-append">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image" onchange="showFileName(event)">
+                                        <label id="inputPlaceholder" class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +157,15 @@
             </div>
         </div>
     </div>
+    <script>
+        function showFileName(event) {
+            let selector = document.getElementById('inputPlaceholder')
+            if(event.target.files.length > 0){
+                let name = event.target.files[0].name
+                selector.innerText= name;
+            }
+        }
+    </script>
 
 @endsection
 
