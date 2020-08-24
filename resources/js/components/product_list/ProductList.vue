@@ -3,12 +3,13 @@
 
         <div class="col-6 col-lg-4 col-xl-3" v-for="product in product_list">
             <div class="prod-item">
-                <img :src="'storage/item/'+product.image"  alt="Syrup">
+                <img :src="'storage/item/'+product.image"  :alt="product.image">
                 <hr>
                 <div class="prod-item_info">
                     <h5 class="prod-item_info-header">{{product.name}}</h5>
                     <p class="prod-item_info-body">{{product.generic.name}}</p>
                     <p class="prod-item_info-body">Code : {{product.code}}</p>
+                    <p class="prod-item_info-body">Dosage : {{product.dosage}}</p>
                     <p class="prod-item_info-body">Brand : {{product.brand.name}}</p>
                     <p class="prod-item_info-body">Size : {{product.size}}</p>
                     <hr>

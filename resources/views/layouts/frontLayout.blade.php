@@ -63,7 +63,7 @@
 
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="#">All</a>
+                            <a class="dropdown-item text-center" href="{{route('front.filter',['itemType'=>''])}}">All</a>
                         </div>
                     </li>
                     <li class="nav-item">

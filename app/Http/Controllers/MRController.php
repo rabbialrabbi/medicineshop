@@ -64,21 +64,19 @@ class MRController extends Controller
 
         $sanitized = $this->validation($request);
 
-
         if($sanitized['user_id']=='none'){
 
-            if(is_null($user = $user->where('email',$sanitized['email1'])->first())){
+            if(is_null($user->where('email',$sanitized['email1'])->first())){
                 $user = $user->create([
                     'name'=>$sanitized['name'],
                     'email'=>$sanitized['email1'],
-                    'password'=>Hash::make('12345678')
+                    'password'=>Hash::make('12345678'),
                 ]);
                 $sanitized['user_id'] = $user->id;
             }else{
-                return redirect()->route('mr.create')->with('message','The Entry has already been exist');
+                exit('The Entry has already been exist');
             }
         }
-
         $sanitized['image'] = 'mr_'.$request->code.'_'.Carbon::now()->timestamp.'.'.$request->file('image')->getClientOriginalExtension();
         $request->file('image')->storeAs('public/mrlist',$sanitized['image']);
         $result = MR::create($sanitized);

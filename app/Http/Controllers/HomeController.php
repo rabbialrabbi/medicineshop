@@ -60,7 +60,7 @@ class HomeController extends Controller
         }
 
         $items =  MR::orderBy('created_at', 'desc')->get();
-        return view('pages.mrview',compact('productList','mr','generic','items'));
+        return view('pages.mrview',compact('productList','items'));
     }
     public function contact()
     {
