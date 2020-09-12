@@ -1,8 +1,9 @@
 .prod {
     background-color: $lightOrange;
-
-
     padding-bottom: 60px;
+    &_box{
+        background-color: white;
+    }
     &-item {
         //outline: 1px solid $themeOrange;
         background-color: white;

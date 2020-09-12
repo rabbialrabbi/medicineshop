@@ -9,8 +9,8 @@ class NoticeController extends Controller
 {
     public function index()
     {
-       $noticeTop = Notice::all()->first();
-       $notice =  Notice::offset(1)
+       $noticeTop = Notice::orderBy('created_at','desc')->first();
+       $notice =  Notice::orderBy('created_at','desc')->offset(1)
                ->limit(5)
                ->get();;
         return view('pages.notice',compact('notice','noticeTop'));

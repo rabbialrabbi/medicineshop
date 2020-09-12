@@ -18,7 +18,149 @@
                 <div class="u-line"></div>
             </div>
 
-            <product-list :product_list="{{$productList}}"></product-list>
+            <!--------------------------------------Slide-------------------------------------------->
+
+            <div id="frontCarousel" class="owl-carousel">
+
+                <div class="justify-content-center ">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/hermin.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/rooh-afza.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/safi.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/suline.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="justify-content-center">
+                    <div class="prod-item pb-4">
+                        <img src="{{asset('images/product/syrup.jpg')}}">
+                        <hr>
+                        <div class="prod-item_info">
+                            <h5 class="prod-item_info-header">Product Name</h5>
+                            <p class="prod-item_info-body">Description</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+            <!--------------------------------------End Slide-------------------------------------------->
 
 
         </div>
@@ -113,7 +255,6 @@
                     </div>
 
 
-
                     <div class="row ft-parents">
                         <div class="col-3 ft-child">
                             <div class="ft-wraper"><i class="fab fa-facebook-f"></i></div>
@@ -171,3 +312,19 @@
 
     </section>
 @endsection
+
+@push('scripts')
+    <script src="{{asset('js/owl.carousel.min.js')}}"></script>
+    <script !src="">
+        $(document).ready(function(){
+            $('#frontCarousel').owlCarousel({
+                'items':4,
+                'loop':true,
+                'autoplay':true,
+                'autoplayTimeout':5000,
+                'autoplayHoverPause':true,
+                'margin':30
+            });
+        });
+    </script>
+@endpush

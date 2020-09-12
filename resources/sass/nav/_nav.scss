@@ -12,4 +12,15 @@
     padding: 10px 10px 20px 30px;
 }
 
+.nav {
+    &-icon-cont{
+        position: relative;
+    }
+    &-icon{
+        position: absolute;
+        left: -120px;
+        top: -15px;
+    }
+}
+
 

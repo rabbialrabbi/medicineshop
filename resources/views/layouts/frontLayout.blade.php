@@ -15,6 +15,7 @@
                         <div ><a href="#">Product Price List</a><span>|</span></div>
                         <div ><a href="#">Contact Us</a><span>|</span></div>
                         <div ><a href="#">Extra</a><span>|</span></div>
+                        <div ><a href="/admin">Dashboard</a><span>|</span></div>
                     </div>
                 </div>
                 <div class="col-6 switch-button d-none d-md-block ">
@@ -32,7 +33,6 @@
                     <span class="switch-text">বাংলা</span>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -44,7 +44,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="container">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs nav-icon-cont">
+                    <div class="nav-item nav-icon">
+                        <a href="{{route('home.view')}}"><img src="{{asset('images/logotran.png')}}" alt="LOGO"></a>
+                    </div>
+
                     <li class="nav-item">
                         <a class="nav-link @yield('home-active')" href="{{route('home.view')}}">{{__('front.home')}}</a>
                     </li>

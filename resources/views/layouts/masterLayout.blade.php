@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 
+    <link rel="stylesheet" href="{{asset('css/owl/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/owl/owl.theme.default.min.css')}}">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -25,6 +28,8 @@
 </div>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
-{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>--}}
+
+@stack('scripts')
+
 </body>
 </html>

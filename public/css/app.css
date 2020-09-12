@@ -311,12 +311,20 @@ a:hover {
   padding: 10px 10px 20px 30px;
 }
 
+.nav-icon-cont {
+  position: relative;
+}
+
+.nav-icon {
+  position: absolute;
+  left: -120px;
+  top: -15px;
+}
+
 .carousel {
-  height: 400px;
   background-color: #ff7700;
-  font-size: 3rem;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 20px;
 }
 
 .service {
@@ -343,6 +351,10 @@ a:hover {
 .prod {
   background-color: #f2f2f2;
   padding-bottom: 60px;
+}
+
+.prod_box {
+  background-color: white;
 }
 
 .prod-item {

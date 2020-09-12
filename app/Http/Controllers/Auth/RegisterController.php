@@ -69,25 +69,29 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        $token = Hash::make(time());
-        $data = User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
-            'verified_token'=>$token,
-        ]);
+        try{
+            $token = Hash::make(time());
+            $data = User::create([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'password'=>Hash::make($request->password),
+                'verified_token'=>$token,
+            ]);
 
-        if(!is_null($data)){
+            if(!is_null($data)){
                 Mail::to($request->email)->send(
                     new EmailSignup($data,$token)
                 );
-                $debug = new Debugger();
-                $debug->sentMail();
 
-               return view('errors.validationRequest');
+                return view('errors.validationRequest');
             }
 
-            return redirect()->route('login');
+        }catch (Exception $e){
+            dd($e->getMessage());
+        }
+
+
+         return redirect()->route('login');
 
 
     }
