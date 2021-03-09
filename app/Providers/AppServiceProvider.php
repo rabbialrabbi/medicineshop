@@ -35,10 +35,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        View::share('users', User::where('is_verified',2)->get());
-        View::share('pending_order', Order::where('status','Pending')->get());
-        View::share('pending_message', Message::where('status','Pending')->get());
-        View::share('itemType', ItemType::all());
-
+        if(!is_null(User::All()->first)){
+            View::share('users', User::where('is_verified',2)->get());
+            View::share('pending_order', Order::where('status','Pending')->get());
+            View::share('pending_message', Message::where('status','Pending')->get());
+            View::share('itemType', ItemType::all());
+        }
     }
 }

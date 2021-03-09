@@ -2,16 +2,30 @@ import ShoppingChart from "./components/ShoppingChart";
 import ProductList from "./components/product_list/ProductList";
 import sendMessage from "./components/sendMessage";
 import InvoiceComponent from "./components/invoice/InvoiceComponent";
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
+import VueRouter from "vue-router";
+import Vuex from "Vuex" ;
+import {routes} from '/routes'
 
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+Vue.use(VueRouter);
+Vue.use(Vuex);
+
+const router = new VueRouter({
+    routes,
+    mode:'history'
+})
+
+const store = new Vuex.Store({
+    state:{
+
+    },
+    getters:{
+
+    }
+})
 
 /**
  * The following block of code may be used to automatically register your
@@ -34,14 +48,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    data:{
-    },
-    methods:{
-    },
     components: {
         ShoppingChart,
         ProductList,
         sendMessage,
         InvoiceComponent
-    }
+    },
+    router,
+    store
 });
